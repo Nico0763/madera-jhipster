@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "component",
+            "otherEntityName": "component",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "angle",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "max"
+            ],
+            "fieldValidateRulesMax": "9"
+        },
+        {
+            "fieldName": "length",
+            "fieldType": "Float"
+        }
+    ],
+    "changelogDate": "20161020111423",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "component_product",
+    "pagination": "pagination"
+}

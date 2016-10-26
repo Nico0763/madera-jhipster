@@ -1,0 +1,24 @@
+{
+    "maderaApp": {
+        "finition_ext" : {
+            "home": {
+                "title": "Finition Exts",
+                "createLabel": "Create a new Finition Ext",
+                "createOrEditLabel": "Create or edit a Finition Ext",
+                "search": "Search for Finition Ext"
+            },
+            "created": "A new Finition Ext is created with identifier {{ param }}",
+            "updated": "A Finition Ext is updated with identifier {{ param }}",
+            "deleted": "A Finition Ext is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Finition Ext {{ id }}?"
+            },
+            "detail": {
+                "title": "Finition Ext"
+            },
+            "image": "Image",
+            "name": "Name",
+            "assortment": "Assortment"
+        }
+    }
+}

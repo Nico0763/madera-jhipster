@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "command_component",
+            "otherEntityName": "command_component",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "command"
+        },
+        {
+            "relationshipName": "provider",
+            "otherEntityName": "provider",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "reference",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "pattern"
+            ],
+            "fieldValidateRulesPattern": "^[0-9]{4}-[0-9]{2}-[A-Z]-[A-Z]-[0-9]{1,4}$"
+        },
+        {
+            "fieldName": "state",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "max"
+            ],
+            "fieldValidateRulesMax": "9"
+        }
+    ],
+    "changelogDate": "20161021115214",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "command",
+    "pagination": "pagination"
+}

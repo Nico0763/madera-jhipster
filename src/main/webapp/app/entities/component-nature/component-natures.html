@@ -1,0 +1,62 @@
+<div>
+    <h2 data-translate="maderaApp.component_nature.home.title">Component Natures</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="component-nature.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="maderaApp.component_nature.home.createLabel">
+                        Create new Component Nature
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="maderaApp.component_nature.nature">Nature</span></th>
+                    <th><span data-translate="maderaApp.component_nature.caracteristics">Caracteristics</span></th>
+                    <th><span data-translate="maderaApp.component_nature.unit_used">Unit Used</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="component_nature in vm.component_natures track by component_nature.id">
+                    <td><a ui-sref="component-nature-detail({id:component_nature.id})">{{component_nature.id}}</a></td>
+                    <td>{{component_nature.nature}}</td>
+                    <td>{{component_nature.caracteristics}}</td>
+                    <td>
+                        <a ui-sref="unit-used-detail({id:component_nature.unit_used.id})">{{component_nature.unit_used.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="component-nature-detail({id:component_nature.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="component-nature.edit({id:component_nature.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="component-nature.delete({id:component_nature.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

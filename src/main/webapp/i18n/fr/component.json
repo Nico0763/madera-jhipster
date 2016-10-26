@@ -1,0 +1,28 @@
+{
+    "maderaApp": {
+        "component" : {
+            "home": {
+                "title": "Components",
+                "createLabel": "Créer un nouveau Component",
+                "createOrEditLabel": "Créer ou éditer un Component",
+                "search": "Recherche pour Component"
+            },
+            "created": "Un nouveau Component a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Component avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Component avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Component {{ id }} ?"
+            },
+            "detail": {
+                "title": "Component"
+            },
+            "reference": "Reference",
+            "image": "Image",
+            "component_product": "Component Product",
+            "module_component": "Module Component",
+            "provider": "Provider",
+            "component_nature": "Component Nature",
+            "command_component": "Command Component"
+        }
+    }
+}

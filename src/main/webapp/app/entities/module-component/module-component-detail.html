@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span data-translate="maderaApp.module_component.detail.title">Module Component</span> {{vm.module_component.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="maderaApp.module_component.quantity">Quantity</span></dt>
+        <dd>
+            <span>{{vm.module_component.quantity}}</span>
+        </dd>
+        <dt><span data-translate="maderaApp.module_component.module">Module</span></dt>
+        <dd>
+            <a ui-sref="module-detail({id:vm.module_component.module.id})">{{vm.module_component.module.id}}</a>
+        </dd>
+        <dt><span data-translate="maderaApp.module_component.component">Component</span></dt>
+        <dd>
+            <a ui-sref="component-detail({id:vm.module_component.component.id})">{{vm.module_component.component.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="module-component-detail.edit({id:vm.module_component.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

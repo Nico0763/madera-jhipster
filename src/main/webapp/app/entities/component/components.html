@@ -1,0 +1,75 @@
+<div>
+    <h2 data-translate="maderaApp.component.home.title">Components</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="component.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="maderaApp.component.home.createLabel">
+                        Create new Component
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="reference"><span data-translate="maderaApp.component.reference">Reference</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="image"><span data-translate="maderaApp.component.image">Image</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="provider.id"><span data-translate="maderaApp.component.provider">Provider</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="component_nature.id"><span data-translate="maderaApp.component.component_nature">Component Nature</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="component in vm.components track by component.id">
+                    <td><a ui-sref="component-detail({id:component.id})">{{component.id}}</a></td>
+                    <td>{{component.reference}}</td>
+                    <td>
+                        <a ng-if="component.image" ng-click="vm.openFile(component.imageContentType, component.image)">
+                            <img data-ng-src="{{'data:' + component.imageContentType + ';base64,' + component.image}}" style="max-height: 30px;"/>
+                        </a>
+                        <span ng-if="component.image">{{component.imageContentType}}, {{vm.byteSize(component.image)}}</span>
+                    </td>
+                    <td>
+                        <a ui-sref="provider-detail({id:component.provider.id})">{{component.provider.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="component-nature-detail({id:component.component_nature.id})">{{component.component_nature.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="component-detail({id:component.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="component.edit({id:component.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="component.delete({id:component.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

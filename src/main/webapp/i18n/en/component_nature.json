@@ -1,0 +1,25 @@
+{
+    "maderaApp": {
+        "component_nature" : {
+            "home": {
+                "title": "Component Natures",
+                "createLabel": "Create a new Component Nature",
+                "createOrEditLabel": "Create or edit a Component Nature",
+                "search": "Search for Component Nature"
+            },
+            "created": "A new Component Nature is created with identifier {{ param }}",
+            "updated": "A Component Nature is updated with identifier {{ param }}",
+            "deleted": "A Component Nature is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Component Nature {{ id }}?"
+            },
+            "detail": {
+                "title": "Component Nature"
+            },
+            "nature": "Nature",
+            "caracteristics": "Caracteristics",
+            "component": "Component",
+            "unit_used": "Unit Used"
+        }
+    }
+}

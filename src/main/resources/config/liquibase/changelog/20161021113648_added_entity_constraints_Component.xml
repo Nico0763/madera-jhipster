@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Component.
+    -->
+    <changeSet id="20161021113648-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="provider_id"
+                                 baseTableName="component"
+                                 constraintName="fk_component_provider_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="provider"/>
+
+        <addForeignKeyConstraint baseColumnNames="component_nature_id"
+                                 baseTableName="component"
+                                 constraintName="fk_component_component_nature_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="component_nature"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,59 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "principal_cross_section",
+            "otherEntityName": "principal_cross_section",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "module_nature",
+            "otherEntityName": "module_nature",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "module"
+        },
+        {
+            "relationshipName": "assortment",
+            "otherEntityName": "assortment",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "module_component",
+            "otherEntityName": "module_component",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "module"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "cctp",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "Float"
+        }
+    ],
+    "changelogDate": "20161021112240",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "module",
+    "pagination": "pagination"
+}

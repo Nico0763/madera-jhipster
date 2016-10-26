@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "assortment",
+            "otherEntityName": "assortment",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "frame"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image",
+            "fieldValidateRules": []
+        }
+    ],
+    "changelogDate": "20161019114349",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "frame",
+    "pagination": "pagination"
+}

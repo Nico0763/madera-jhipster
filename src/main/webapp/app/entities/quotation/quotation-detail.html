@@ -1,0 +1,47 @@
+
+<div>
+    <h2><span data-translate="maderaApp.quotation.detail.title">Quotation</span> {{vm.quotation.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="maderaApp.quotation.name">Name</span></dt>
+        <dd>
+            <span>{{vm.quotation.name}}</span>
+        </dd>
+        <dt><span data-translate="maderaApp.quotation.date">Date</span></dt>
+        <dd>
+            <span>{{vm.quotation.date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="maderaApp.quotation.state">State</span></dt>
+        <dd>
+            <span>{{vm.quotation.state}}</span>
+        </dd>
+        <dt><span data-translate="maderaApp.quotation.commercial_percentage">Commercial Percentage</span></dt>
+        <dd>
+            <span>{{vm.quotation.commercial_percentage}}</span>
+        </dd>
+        <dt><span data-translate="maderaApp.quotation.reference">Reference</span></dt>
+        <dd>
+            <span>{{vm.quotation.reference}}</span>
+        </dd>
+        <dt><span data-translate="maderaApp.quotation.assortment">Assortment</span></dt>
+        <dd>
+            <a ui-sref="assortment-detail({id:vm.quotation.assortment.id})">{{vm.quotation.assortment.id}}</a>
+        </dd>
+        <dt><span data-translate="maderaApp.quotation.customer">Customer</span></dt>
+        <dd>
+            <a ui-sref="customer-detail({id:vm.quotation.customer.id})">{{vm.quotation.customer.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="quotation-detail.edit({id:vm.quotation.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

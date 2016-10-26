@@ -1,0 +1,23 @@
+{
+    "maderaApp": {
+        "insulating_type" : {
+            "home": {
+                "title": "Insulating Types",
+                "createLabel": "Create a new Insulating Type",
+                "createOrEditLabel": "Create or edit a Insulating Type",
+                "search": "Search for Insulating Type"
+            },
+            "created": "A new Insulating Type is created with identifier {{ param }}",
+            "updated": "A Insulating Type is updated with identifier {{ param }}",
+            "deleted": "A Insulating Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Insulating Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Insulating Type"
+            },
+            "name": "Name",
+            "assortment": "Assortment"
+        }
+    }
+}

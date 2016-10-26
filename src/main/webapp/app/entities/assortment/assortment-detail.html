@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span data-translate="maderaApp.assortment.detail.title">Assortment</span> {{vm.assortment.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="maderaApp.assortment.name">Name</span></dt>
+        <dd>
+            <span>{{vm.assortment.name}}</span>
+        </dd>
+        <dt><span data-translate="maderaApp.assortment.skeleton_conception_mode">Skeleton Conception Mode</span></dt>
+        <dd>
+            <div ng-if="vm.assortment.skeleton_conception_mode">
+                <a ng-click="vm.openFile(vm.assortment.skeleton_conception_modeContentType, vm.assortment.skeleton_conception_mode)" data-translate="entity.action.open">open</a>
+                {{vm.assortment.skeleton_conception_modeContentType}}, {{vm.byteSize(vm.assortment.skeleton_conception_mode)}}
+            </div>
+        </dd>
+        <dt><span data-translate="maderaApp.assortment.finition_ext">Finition Ext</span></dt>
+        <dd>
+            <a ui-sref="finition-ext-detail({id:vm.assortment.finition_ext.id})">{{vm.assortment.finition_ext.id}}</a>
+        </dd>
+        <dt><span data-translate="maderaApp.assortment.insulating_type">Insulating Type</span></dt>
+        <dd>
+            <a ui-sref="insulating-type-detail({id:vm.assortment.insulating_type.id})">{{vm.assortment.insulating_type.id}}</a>
+        </dd>
+        <dt><span data-translate="maderaApp.assortment.frame">Frame</span></dt>
+        <dd>
+            <a ui-sref="frame-detail({id:vm.assortment.frame.id})">{{vm.assortment.frame.id}}</a>
+        </dd>
+        <dt><span data-translate="maderaApp.assortment.cover_type">Cover Type</span></dt>
+        <dd>
+            <a ui-sref="cover-type-detail({id:vm.assortment.cover_type.id})">{{vm.assortment.cover_type.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="assortment-detail.edit({id:vm.assortment.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Assortment.
+    -->
+    <changeSet id="20161019114758-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="finition_ext_id"
+                                 baseTableName="assortment"
+                                 constraintName="fk_assortment_finition_ext_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="finition_ext"/>
+
+        <addForeignKeyConstraint baseColumnNames="insulating_type_id"
+                                 baseTableName="assortment"
+                                 constraintName="fk_assortment_insulating_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="insulating_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="frame_id"
+                                 baseTableName="assortment"
+                                 constraintName="fk_assortment_frame_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="frame"/>
+
+        <addForeignKeyConstraint baseColumnNames="cover_type_id"
+                                 baseTableName="assortment"
+                                 constraintName="fk_assortment_cover_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cover_type"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,29 @@
+{
+    "maderaApp": {
+        "module" : {
+            "home": {
+                "title": "Modules",
+                "createLabel": "Créer un nouveau Module",
+                "createOrEditLabel": "Créer ou éditer un Module",
+                "search": "Recherche pour Module"
+            },
+            "created": "Un nouveau Module a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Module avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Module avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Module {{ id }} ?"
+            },
+            "detail": {
+                "title": "Module"
+            },
+            "name": "Name",
+            "cctp": "Cctp",
+            "price": "Price",
+            "principal_cross_section": "Principal Cross Section",
+            "module_nature": "Module Nature",
+            "product": "Product",
+            "assortment": "Assortment",
+            "module_component": "Module Component"
+        }
+    }
+}

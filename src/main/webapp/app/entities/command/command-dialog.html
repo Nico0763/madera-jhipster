@@ -1,0 +1,60 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCommandLabel" data-translate="maderaApp.command.home.createOrEditLabel">Create or edit a Command</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.command.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.command.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="maderaApp.command.reference" for="field_reference">Reference</label>
+            <input type="text" class="form-control" name="reference" id="field_reference"
+                    ng-model="vm.command.reference"
+                    ng-pattern="/^[0-9]{4}-[0-9]{2}-[A-Z]-[A-Z]-[0-9]{1,4}$/" />
+            <div ng-show="editForm.reference.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.reference.$error.pattern" data-translate="entity.validation.pattern" translate-value-pattern="^[0-9]{4}-[0-9]{2}-[A-Z]-[A-Z]-[0-9]{1,4}$">
+                    This field should follow pattern "^[0-9]{4}-[0-9]{2}-[A-Z]-[A-Z]-[0-9]{1,4}$".
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="maderaApp.command.state" for="field_state">State</label>
+            <input type="number" class="form-control" name="state" id="field_state"
+                    ng-model="vm.command.state"
+                    max="9" />
+            <div ng-show="editForm.state.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.state.$error.max" data-translate="entity.validation.max" translate-value-max="9">
+                    This field cannot be more than 9.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.state.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="maderaApp.command.provider" for="field_provider">Provider</label>
+            <select class="form-control" id="field_provider" name="provider" ng-model="vm.command.provider" ng-options="provider as provider.id for provider in vm.providers track by provider.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

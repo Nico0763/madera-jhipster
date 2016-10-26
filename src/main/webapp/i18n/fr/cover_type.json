@@ -1,0 +1,24 @@
+{
+    "maderaApp": {
+        "cover_type" : {
+            "home": {
+                "title": "Cover_types",
+                "createLabel": "Créer un nouveau Cover Type",
+                "createOrEditLabel": "Créer ou éditer un Cover Type",
+                "search": "Recherche pour Cover Type"
+            },
+            "created": "Un nouveau Cover Type a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Cover Type avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Cover Type avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Cover Type {{ id }} ?"
+            },
+            "detail": {
+                "title": "Cover Type"
+            },
+            "name": "Name",
+            "image": "Image",
+            "assortment": "Assortment"
+        }
+    }
+}

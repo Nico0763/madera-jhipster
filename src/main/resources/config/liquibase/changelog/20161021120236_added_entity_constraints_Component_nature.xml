@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Component_nature.
+    -->
+    <changeSet id="20161021120236-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="unit_used_id"
+                                 baseTableName="component_nature"
+                                 constraintName="fk_component_nature_unit_used_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="unit_used"/>
+
+    </changeSet>
+</databaseChangeLog>

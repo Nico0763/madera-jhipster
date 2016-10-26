@@ -1,0 +1,25 @@
+{
+    "maderaApp": {
+        "module_nature" : {
+            "home": {
+                "title": "Module_natures",
+                "createLabel": "Créer un nouveau Module Nature",
+                "createOrEditLabel": "Créer ou éditer un Module Nature",
+                "search": "Recherche pour Module Nature"
+            },
+            "created": "Un nouveau Module Nature a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Module Nature avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Module Nature avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Module Nature {{ id }} ?"
+            },
+            "detail": {
+                "title": "Module Nature"
+            },
+            "nature": "Nature",
+            "caracteristics": "Caracteristics",
+            "module": "Module",
+            "unit_used": "Unit Used"
+        }
+    }
+}

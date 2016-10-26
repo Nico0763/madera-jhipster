@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="maderaApp.deadline.detail.title">Deadline</span> {{vm.deadline.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="maderaApp.deadline.name">Name</span></dt>
+        <dd>
+            <span>{{vm.deadline.name}}</span>
+        </dd>
+        <dt><span data-translate="maderaApp.deadline.percentage">Percentage</span></dt>
+        <dd>
+            <span>{{vm.deadline.percentage}}</span>
+        </dd>
+        <dt><span data-translate="maderaApp.deadline.date">Date</span></dt>
+        <dd>
+            <span>{{vm.deadline.date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="maderaApp.deadline.quotation">Quotation</span></dt>
+        <dd>
+            <a ui-sref="quotation-detail({id:vm.deadline.quotation.id})">{{vm.deadline.quotation.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="deadline-detail.edit({id:vm.deadline.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

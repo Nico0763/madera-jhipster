@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "module_nature",
+            "otherEntityName": "module_nature",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "unit_used"
+        },
+        {
+            "relationshipName": "component_nature",
+            "otherEntityName": "component_nature",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "unit_used"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "regular_expression",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "255"
+        }
+    ],
+    "changelogDate": "20161021112838",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "unit_used",
+    "pagination": "pagination"
+}

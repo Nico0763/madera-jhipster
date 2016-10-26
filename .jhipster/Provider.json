@@ -1,0 +1,82 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "component",
+            "otherEntityName": "component",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "provider"
+        },
+        {
+            "relationshipName": "command",
+            "otherEntityName": "command",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "provider"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "pc",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "pattern"
+            ],
+            "fieldValidateRulesPattern": "^[0-9]{5}$"
+        },
+        {
+            "fieldName": "city",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "country",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "15"
+        },
+        {
+            "fieldName": "phone_number",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "pattern"
+            ],
+            "fieldValidateRulesPattern": "^\\+[0-9]{11}$"
+        },
+        {
+            "fieldName": "mail",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "pattern"
+            ],
+            "fieldValidateRulesMaxlength": "50",
+            "fieldValidateRulesPattern": "^\\w+@[a-zA-Z_]+?\\[a-zA-Z]{2,3}$"
+        }
+    ],
+    "changelogDate": "20161021120024",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "provider",
+    "pagination": "pagination"
+}

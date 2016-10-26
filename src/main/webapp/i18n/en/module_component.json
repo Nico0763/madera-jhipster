@@ -1,0 +1,24 @@
+{
+    "maderaApp": {
+        "module_component" : {
+            "home": {
+                "title": "Module Components",
+                "createLabel": "Create a new Module Component",
+                "createOrEditLabel": "Create or edit a Module Component",
+                "search": "Search for Module Component"
+            },
+            "created": "A new Module Component is created with identifier {{ param }}",
+            "updated": "A Module Component is updated with identifier {{ param }}",
+            "deleted": "A Module Component is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Module Component {{ id }}?"
+            },
+            "detail": {
+                "title": "Module Component"
+            },
+            "quantity": "Quantity",
+            "module": "Module",
+            "component": "Component"
+        }
+    }
+}

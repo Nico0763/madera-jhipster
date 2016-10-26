@@ -1,0 +1,24 @@
+{
+    "maderaApp": {
+        "frame" : {
+            "home": {
+                "title": "Frames",
+                "createLabel": "Create a new Frame",
+                "createOrEditLabel": "Create or edit a Frame",
+                "search": "Search for Frame"
+            },
+            "created": "A new Frame is created with identifier {{ param }}",
+            "updated": "A Frame is updated with identifier {{ param }}",
+            "deleted": "A Frame is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Frame {{ id }}?"
+            },
+            "detail": {
+                "title": "Frame"
+            },
+            "name": "Name",
+            "image": "Image",
+            "assortment": "Assortment"
+        }
+    }
+}

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         name="CM1"
+         updateCheck="false"
+         maxBytesLocalHeap="16M">
+
+    <!--
+      This is a default configuration, it is re-configured by the CacheConfiguration Spring Bean, using the
+      properties from the resources/config/*.yml files.
+    -->
+
+    <diskStore path="java.io.tmpdir"/>
+
+    <defaultCache
+            eternal="false"
+            overflowToDisk="false"
+            />
+
+    <cache name="com.madera.app.domain.User"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Authority"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.User.authorities"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.PersistentToken"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.User.persistentTokens"
+           timeToLiveSeconds="3600">
+    </cache>
+    
+    <cache name="com.madera.app.domain.Finition_ext"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Finition_ext.assortments"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Insulating_type"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Insulating_type.assortments"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Frame"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Frame.assortments"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Cover_type"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Cover_type.assortments"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Assortment"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Assortment.modules"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Assortment.patterns"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Assortment.quotations"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Pattern"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Pattern.products"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Quotation"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Quotation.deadlines"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Quotation.products"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Deadline"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Customer"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Customer.customers"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Product"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Product.component_products"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Component_product"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Module"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Module.products"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Module.module_components"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Principal_cross_section"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Principal_cross_section.modules"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Module_nature"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Module_nature.modules"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Unit_used"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Unit_used.module_natures"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Unit_used.component_natures"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Module_component"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Component"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Component.component_products"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Component.module_components"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Component.order_components"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Order_component"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Command"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Command.command_components"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Component.command_components"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Command_component"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Provider"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Provider.components"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Provider.commands"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Component_nature"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Component_nature.components"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.madera.app.domain.Customer.quotations"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <!-- jhipster-needle-ehcache-add-entry -->
+</ehcache>

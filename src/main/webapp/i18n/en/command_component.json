@@ -1,0 +1,24 @@
+{
+    "maderaApp": {
+        "command_component" : {
+            "home": {
+                "title": "Command Components",
+                "createLabel": "Create a new Command Component",
+                "createOrEditLabel": "Create or edit a Command Component",
+                "search": "Search for Command Component"
+            },
+            "created": "A new Command Component is created with identifier {{ param }}",
+            "updated": "A Command Component is updated with identifier {{ param }}",
+            "deleted": "A Command Component is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Command Component {{ id }}?"
+            },
+            "detail": {
+                "title": "Command Component"
+            },
+            "quantity": "Quantity",
+            "component": "Component",
+            "command": "Command"
+        }
+    }
+}

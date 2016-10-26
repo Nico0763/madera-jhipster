@@ -1,0 +1,25 @@
+{
+    "maderaApp": {
+        "unit_used" : {
+            "home": {
+                "title": "Unit_useds",
+                "createLabel": "Créer un nouveau Unit Used",
+                "createOrEditLabel": "Créer ou éditer un Unit Used",
+                "search": "Recherche pour Unit Used"
+            },
+            "created": "Un nouveau Unit Used a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Unit Used avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Unit Used avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Unit Used {{ id }} ?"
+            },
+            "detail": {
+                "title": "Unit Used"
+            },
+            "name": "Name",
+            "regular_expression": "Regular Expression",
+            "module_nature": "Module Nature",
+            "component_nature": "Component Nature"
+        }
+    }
+}

@@ -1,0 +1,14 @@
+version: '2'
+services:
+    madera-mysql:
+        container_name: madera-mysql
+        image: mysql:5.7.13
+        # volumes:
+        #     - ~/volumes/jhipster/madera/mysql/:/var/lib/mysql/
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_DATABASE=madera
+        ports:
+            - 3306:3306
+        command: mysqld --lower_case_table_names=1 --skip-ssl

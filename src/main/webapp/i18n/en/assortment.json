@@ -1,0 +1,30 @@
+{
+    "maderaApp": {
+        "assortment" : {
+            "home": {
+                "title": "Assortments",
+                "createLabel": "Create a new Assortment",
+                "createOrEditLabel": "Create or edit a Assortment",
+                "search": "Search for Assortment"
+            },
+            "created": "A new Assortment is created with identifier {{ param }}",
+            "updated": "A Assortment is updated with identifier {{ param }}",
+            "deleted": "A Assortment is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Assortment {{ id }}?"
+            },
+            "detail": {
+                "title": "Assortment"
+            },
+            "name": "Name",
+            "skeleton_conception_mode": "Skeleton Conception Mode",
+            "finition_ext": "Finition Ext",
+            "insulating_type": "Insulating Type",
+            "frame": "Frame",
+            "cover_type": "Cover Type",
+            "module": "Module",
+            "pattern": "Pattern",
+            "quotation": "Quotation"
+        }
+    }
+}

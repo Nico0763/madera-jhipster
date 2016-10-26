@@ -1,0 +1,67 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "finition_ext",
+            "otherEntityName": "finition_ext",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "insulating_type",
+            "otherEntityName": "insulating_type",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "frame",
+            "otherEntityName": "frame",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "cover_type",
+            "otherEntityName": "cover_type",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "module",
+            "otherEntityName": "module",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "assortment"
+        },
+        {
+            "relationshipName": "pattern",
+            "otherEntityName": "pattern",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "assortment"
+        },
+        {
+            "relationshipName": "quotation",
+            "otherEntityName": "quotation",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "assortment"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "skeleton_conception_mode",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "changelogDate": "20161019114758",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "assortment",
+    "pagination": "pagination"
+}

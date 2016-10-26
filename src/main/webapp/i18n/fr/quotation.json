@@ -1,0 +1,30 @@
+{
+    "maderaApp": {
+        "quotation" : {
+            "home": {
+                "title": "Quotations",
+                "createLabel": "Créer un nouveau Quotation",
+                "createOrEditLabel": "Créer ou éditer un Quotation",
+                "search": "Recherche pour Quotation"
+            },
+            "created": "Un nouveau Quotation a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Quotation avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Quotation avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Quotation {{ id }} ?"
+            },
+            "detail": {
+                "title": "Quotation"
+            },
+            "name": "Name",
+            "date": "Date",
+            "state": "State",
+            "commercial_percentage": "Commercial Percentage",
+            "reference": "Reference",
+            "assortment": "Assortment",
+            "deadline": "Deadline",
+            "product": "Product",
+            "customer": "Customer"
+        }
+    }
+}

@@ -1,0 +1,55 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "component_product",
+            "otherEntityName": "component_product",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "component"
+        },
+        {
+            "relationshipName": "module_component",
+            "otherEntityName": "module_component",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "component"
+        },
+        {
+            "relationshipName": "provider",
+            "otherEntityName": "provider",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "component_nature",
+            "otherEntityName": "component_nature",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "command_component",
+            "otherEntityName": "command_component",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "component"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "reference",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "pattern"
+            ],
+            "fieldValidateRulesPattern": "^[0-9]{4}-[0-9]{2}-[A-Z]-[A-Z]$"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        }
+    ],
+    "changelogDate": "20161021113648",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "component",
+    "pagination": "pagination"
+}

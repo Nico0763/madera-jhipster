@@ -1,0 +1,110 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCustomerLabel" data-translate="maderaApp.customer.home.createOrEditLabel">Create or edit a Customer</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.customer.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.customer.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="maderaApp.customer.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.customer.name"
+                    ng-maxlength="50" />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="maderaApp.customer.firstname" for="field_firstname">Firstname</label>
+            <input type="text" class="form-control" name="firstname" id="field_firstname"
+                    ng-model="vm.customer.firstname"
+                    ng-maxlength="25" />
+            <div ng-show="editForm.firstname.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.firstname.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="25">
+                    This field cannot be longer than 25 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="maderaApp.customer.address" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                    ng-model="vm.customer.address"
+                    ng-maxlength="50" />
+            <div ng-show="editForm.address.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.address.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="maderaApp.customer.pc" for="field_pc">Pc</label>
+            <input type="text" class="form-control" name="pc" id="field_pc"
+                    ng-model="vm.customer.pc"
+                    ng-maxlength="5" />
+            <div ng-show="editForm.pc.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.pc.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="5">
+                    This field cannot be longer than 5 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="maderaApp.customer.city" for="field_city">City</label>
+            <input type="text" class="form-control" name="city" id="field_city"
+                    ng-model="vm.customer.city"
+                    ng-maxlength="50" />
+            <div ng-show="editForm.city.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.city.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="maderaApp.customer.phone_number" for="field_phone_number">Phone Number</label>
+            <input type="text" class="form-control" name="phone_number" id="field_phone_number"
+                    ng-model="vm.customer.phone_number"
+                    ng-pattern="/^[0-9]{11}$/" />
+            <div ng-show="editForm.phone_number.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.phone_number.$error.pattern" data-translate="entity.validation.pattern" translate-value-pattern="^[0-9]{11}$">
+                    This field should follow pattern "^[0-9]{11}$".
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="maderaApp.customer.mail" for="field_mail">Mail</label>
+            <input type="text" class="form-control" name="mail" id="field_mail"
+                    ng-model="vm.customer.mail"
+                    ng-pattern="/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/" />
+            <div ng-show="editForm.mail.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.mail.$error.pattern" data-translate="entity.validation.pattern" translate-value-pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$">
+                    This field should follow pattern "^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$".
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

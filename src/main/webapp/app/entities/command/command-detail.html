@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span data-translate="maderaApp.command.detail.title">Command</span> {{vm.command.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="maderaApp.command.reference">Reference</span></dt>
+        <dd>
+            <span>{{vm.command.reference}}</span>
+        </dd>
+        <dt><span data-translate="maderaApp.command.state">State</span></dt>
+        <dd>
+            <span>{{vm.command.state}}</span>
+        </dd>
+        <dt><span data-translate="maderaApp.command.provider">Provider</span></dt>
+        <dd>
+            <a ui-sref="provider-detail({id:vm.command.provider.id})">{{vm.command.provider.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="command-detail.edit({id:vm.command.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

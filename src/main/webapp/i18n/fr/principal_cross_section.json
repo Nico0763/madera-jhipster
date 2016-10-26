@@ -1,0 +1,25 @@
+{
+    "maderaApp": {
+        "principal_cross_section" : {
+            "home": {
+                "title": "Principal_cross_sections",
+                "createLabel": "Créer un nouveau Principal Cross Section",
+                "createOrEditLabel": "Créer ou éditer un Principal Cross Section",
+                "search": "Recherche pour Principal Cross Section"
+            },
+            "created": "Un nouveau Principal Cross Section a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Principal Cross Section avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Principal Cross Section avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Principal Cross Section {{ id }} ?"
+            },
+            "detail": {
+                "title": "Principal Cross Section"
+            },
+            "name": "Name",
+            "description": "Description",
+            "image": "Image",
+            "module": "Module"
+        }
+    }
+}

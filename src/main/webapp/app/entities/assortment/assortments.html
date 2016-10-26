@@ -1,0 +1,81 @@
+<div>
+    <h2 data-translate="maderaApp.assortment.home.title">Assortments</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="assortment.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="maderaApp.assortment.home.createLabel">
+                        Create new Assortment
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span data-translate="maderaApp.assortment.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="skeleton_conception_mode"><span data-translate="maderaApp.assortment.skeleton_conception_mode">Skeleton Conception Mode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="finition_ext.id"><span data-translate="maderaApp.assortment.finition_ext">Finition Ext</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="insulating_type.id"><span data-translate="maderaApp.assortment.insulating_type">Insulating Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="frame.id"><span data-translate="maderaApp.assortment.frame">Frame</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cover_type.id"><span data-translate="maderaApp.assortment.cover_type">Cover Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="assortment in vm.assortments track by assortment.id">
+                    <td><a ui-sref="assortment-detail({id:assortment.id})">{{assortment.id}}</a></td>
+                    <td>{{assortment.name}}</td>
+                    <td>
+                        <a ng-if="assortment.skeleton_conception_mode" ng-click="vm.openFile(assortment.skeleton_conception_modeContentType, assortment.skeleton_conception_mode)" data-translate="entity.action.open">open</a>
+                        <span ng-if="assortment.skeleton_conception_mode">{{assortment.skeleton_conception_modeContentType}}, {{vm.byteSize(assortment.skeleton_conception_mode)}}</span>
+                    </td>
+                    <td>
+                        <a ui-sref="finition-ext-detail({id:assortment.finition_ext.id})">{{assortment.finition_ext.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="insulating-type-detail({id:assortment.insulating_type.id})">{{assortment.insulating_type.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="frame-detail({id:assortment.frame.id})">{{assortment.frame.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="cover-type-detail({id:assortment.cover_type.id})">{{assortment.cover_type.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="assortment-detail({id:assortment.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="assortment.edit({id:assortment.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="assortment.delete({id:assortment.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

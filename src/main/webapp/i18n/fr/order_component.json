@@ -1,0 +1,24 @@
+{
+    "maderaApp": {
+        "order_component" : {
+            "home": {
+                "title": "Order_components",
+                "createLabel": "Créer un nouveau Order Component",
+                "createOrEditLabel": "Créer ou éditer un Order Component",
+                "search": "Recherche pour Order Component"
+            },
+            "created": "Un nouveau Order Component a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Order Component avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Order Component avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Order Component {{ id }} ?"
+            },
+            "detail": {
+                "title": "Order Component"
+            },
+            "quantity": "Quantity",
+            "order": "Order",
+            "component": "Component"
+        }
+    }
+}

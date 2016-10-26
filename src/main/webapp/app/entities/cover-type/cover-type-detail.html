@@ -1,0 +1,32 @@
+
+<div>
+    <h2><span data-translate="maderaApp.cover_type.detail.title">Cover Type</span> {{vm.cover_type.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="maderaApp.cover_type.name">Name</span></dt>
+        <dd>
+            <span>{{vm.cover_type.name}}</span>
+        </dd>
+        <dt><span data-translate="maderaApp.cover_type.image">Image</span></dt>
+        <dd>
+            <div ng-if="vm.cover_type.image">
+                <a ng-click="vm.openFile(vm.cover_type.imageContentType, vm.cover_type.image)">
+                    <img data-ng-src="{{'data:' + vm.cover_type.imageContentType + ';base64,' + vm.cover_type.image}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.cover_type.imageContentType}}, {{vm.byteSize(vm.cover_type.image)}}
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="cover-type-detail.edit({id:vm.cover_type.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

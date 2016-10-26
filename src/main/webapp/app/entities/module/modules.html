@@ -1,0 +1,79 @@
+<div>
+    <h2 data-translate="maderaApp.module.home.title">Modules</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="module.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="maderaApp.module.home.createLabel">
+                        Create new Module
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span data-translate="maderaApp.module.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cctp"><span data-translate="maderaApp.module.cctp">Cctp</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="price"><span data-translate="maderaApp.module.price">Price</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="principal_cross_section.id"><span data-translate="maderaApp.module.principal_cross_section">Principal Cross Section</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="module_nature.id"><span data-translate="maderaApp.module.module_nature">Module Nature</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="assortment.id"><span data-translate="maderaApp.module.assortment">Assortment</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="module in vm.modules track by module.id">
+                    <td><a ui-sref="module-detail({id:module.id})">{{module.id}}</a></td>
+                    <td>{{module.name}}</td>
+                    <td>
+                        <a ng-if="module.cctp" ng-click="vm.openFile(module.cctpContentType, module.cctp)" data-translate="entity.action.open">open</a>
+                        <span ng-if="module.cctp">{{module.cctpContentType}}, {{vm.byteSize(module.cctp)}}</span>
+                    </td>
+                    <td>{{module.price}}</td>
+                    <td>
+                        <a ui-sref="principal-cross-section-detail({id:module.principal_cross_section.id})">{{module.principal_cross_section.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="module-nature-detail({id:module.module_nature.id})">{{module.module_nature.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="assortment-detail({id:module.assortment.id})">{{module.assortment.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="module-detail({id:module.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="module.edit({id:module.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="module.delete({id:module.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

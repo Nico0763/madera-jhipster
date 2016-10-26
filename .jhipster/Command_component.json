@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "component",
+            "otherEntityName": "component",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "command",
+            "otherEntityName": "command",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "quantity",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "max"
+            ],
+            "fieldValidateRulesMax": "999"
+        }
+    ],
+    "changelogDate": "20161021115618",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "command_component",
+    "pagination": "pagination"
+}

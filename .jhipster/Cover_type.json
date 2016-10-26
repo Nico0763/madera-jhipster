@@ -1,0 +1,31 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "assortment",
+            "otherEntityName": "assortment",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "cover_type"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        }
+    ],
+    "changelogDate": "20161019114446",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "cover_type",
+    "pagination": "pagination"
+}

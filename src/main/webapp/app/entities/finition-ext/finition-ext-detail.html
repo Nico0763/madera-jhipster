@@ -1,0 +1,32 @@
+
+<div>
+    <h2><span data-translate="maderaApp.finition_ext.detail.title">Finition Ext</span> {{vm.finition_ext.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="maderaApp.finition_ext.image">Image</span></dt>
+        <dd>
+            <div ng-if="vm.finition_ext.image">
+                <a ng-click="vm.openFile(vm.finition_ext.imageContentType, vm.finition_ext.image)">
+                    <img data-ng-src="{{'data:' + vm.finition_ext.imageContentType + ';base64,' + vm.finition_ext.image}}" style="max-width: 100%;"/>
+                </a>
+                {{vm.finition_ext.imageContentType}}, {{vm.byteSize(vm.finition_ext.image)}}
+            </div>
+        </dd>
+        <dt><span data-translate="maderaApp.finition_ext.name">Name</span></dt>
+        <dd>
+            <span>{{vm.finition_ext.name}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="finition-ext-detail.edit({id:vm.finition_ext.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

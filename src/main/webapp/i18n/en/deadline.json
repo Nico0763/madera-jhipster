@@ -1,0 +1,25 @@
+{
+    "maderaApp": {
+        "deadline" : {
+            "home": {
+                "title": "Deadlines",
+                "createLabel": "Create a new Deadline",
+                "createOrEditLabel": "Create or edit a Deadline",
+                "search": "Search for Deadline"
+            },
+            "created": "A new Deadline is created with identifier {{ param }}",
+            "updated": "A Deadline is updated with identifier {{ param }}",
+            "deleted": "A Deadline is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Deadline {{ id }}?"
+            },
+            "detail": {
+                "title": "Deadline"
+            },
+            "name": "Name",
+            "percentage": "Percentage",
+            "date": "Date",
+            "quotation": "Quotation"
+        }
+    }
+}

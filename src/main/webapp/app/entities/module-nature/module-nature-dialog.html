@@ -1,0 +1,56 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myModule_natureLabel" data-translate="maderaApp.module_nature.home.createOrEditLabel">Create or edit a Module Nature</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.module_nature.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.module_nature.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="maderaApp.module_nature.nature" for="field_nature">Nature</label>
+            <input type="text" class="form-control" name="nature" id="field_nature"
+                    ng-model="vm.module_nature.nature"
+                    ng-maxlength="50" />
+            <div ng-show="editForm.nature.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nature.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="maderaApp.module_nature.caracteristics" for="field_caracteristics">Caracteristics</label>
+            <input type="text" class="form-control" name="caracteristics" id="field_caracteristics"
+                    ng-model="vm.module_nature.caracteristics"
+                    ng-maxlength="255" />
+            <div ng-show="editForm.caracteristics.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.caracteristics.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="255">
+                    This field cannot be longer than 255 characters.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="maderaApp.module_nature.unit_used" for="field_unit_used">Unit Used</label>
+            <select class="form-control" id="field_unit_used" name="unit_used" ng-model="vm.module_nature.unit_used" ng-options="unit_used as unit_used.id for unit_used in vm.unit_useds track by unit_used.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

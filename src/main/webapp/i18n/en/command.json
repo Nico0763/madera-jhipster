@@ -1,0 +1,25 @@
+{
+    "maderaApp": {
+        "command" : {
+            "home": {
+                "title": "Commands",
+                "createLabel": "Create a new Command",
+                "createOrEditLabel": "Create or edit a Command",
+                "search": "Search for Command"
+            },
+            "created": "A new Command is created with identifier {{ param }}",
+            "updated": "A Command is updated with identifier {{ param }}",
+            "deleted": "A Command is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Command {{ id }}?"
+            },
+            "detail": {
+                "title": "Command"
+            },
+            "reference": "Reference",
+            "state": "State",
+            "command_component": "Command Component",
+            "provider": "Provider"
+        }
+    }
+}

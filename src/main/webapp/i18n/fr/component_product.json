@@ -1,0 +1,25 @@
+{
+    "maderaApp": {
+        "component_product" : {
+            "home": {
+                "title": "Component_products",
+                "createLabel": "Créer un nouveau Component Product",
+                "createOrEditLabel": "Créer ou éditer un Component Product",
+                "search": "Recherche pour Component Product"
+            },
+            "created": "Un nouveau Component Product a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Component Product avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Component Product avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Component Product {{ id }} ?"
+            },
+            "detail": {
+                "title": "Component Product"
+            },
+            "angle": "Angle",
+            "length": "Length",
+            "product": "Product",
+            "component": "Component"
+        }
+    }
+}

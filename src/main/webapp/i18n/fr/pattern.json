@@ -1,0 +1,24 @@
+{
+    "maderaApp": {
+        "pattern" : {
+            "home": {
+                "title": "Patterns",
+                "createLabel": "Créer un nouveau Pattern",
+                "createOrEditLabel": "Créer ou éditer un Pattern",
+                "search": "Recherche pour Pattern"
+            },
+            "created": "Un nouveau Pattern a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Pattern avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Pattern avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Pattern {{ id }} ?"
+            },
+            "detail": {
+                "title": "Pattern"
+            },
+            "name": "Name",
+            "assortment": "Assortment",
+            "product": "Product"
+        }
+    }
+}
