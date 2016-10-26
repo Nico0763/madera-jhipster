@@ -19,6 +19,11 @@
                     templateUrl: 'app/home/home.html',
                     controller: 'HomeController',
                     controllerAs: 'vm'
+                },
+                'login@home': {
+                    templateUrl:'app/login/login.html',
+                    controller:'LoginMaderaController',
+                    controllerAs: 'vm'
                 }
             },
             resolve: {

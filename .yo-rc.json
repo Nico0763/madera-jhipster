@@ -27,6 +27,7 @@
     "languages": [
       "fr",
       "en"
-    ]
+    ],
+    "herokuAppName": "maderaapp"
   }
 }

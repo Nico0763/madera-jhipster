@@ -1,0 +1,24 @@
+<div class="row">
+
+    <div class="col-md-12 text-center centered" style="top:70px">
+        <h3 class="h3--login">Administration de parcours de remédiation cognitive</h3>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-4 col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-4 text-center centered" style="top:85px">
+
+        <form class="row__form-login" role="form">
+            <label for="username" class="label--login">Identifiant</label>
+            <input id="username" class="form-control" type="text" ng-model="vm.username"/>
+            <label for="password" class="label--login">Mot de passe</label>
+            <input id="password" class="form-control" type="password" ng-model="vm.password"/>
+            <button class="btn btn--connect" type="submit" ng-click="vm.login()">Se connecter</button>
+        </form>
+
+        <div ng-if="vm.authenticationError == true" class="alert alert-danger" style="text-align:center; margin-top: 15px;" role="alert">
+            <strong>Les informations renseignées sont erronées.</strong>
+        </div>
+
+    </div>
+</div>

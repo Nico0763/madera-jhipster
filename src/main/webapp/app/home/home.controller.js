@@ -10,7 +10,7 @@
     function HomeController ($scope, Principal, LoginService, $state) {
         var vm = this;
 
-        vm.account = null;
+        vm.account = null; 
         vm.isAuthenticated = null;
         vm.login = LoginService.open;
         vm.register = register;
@@ -18,7 +18,7 @@
             getAccount();
         });
 
-        getAccount();
+       getAccount();
 
         function getAccount() {
             Principal.identity().then(function(account) {
@@ -27,7 +27,7 @@
             });
         }
         function register () {
-            $state.go('register');
+            $state.go('register'); 
         }
     }
 })();

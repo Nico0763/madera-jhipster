@@ -5,9 +5,9 @@
         .module('maderaApp')
         .factory('LoginService', LoginService);
 
-    LoginService.$inject = ['$uibModal'];
+    LoginService.$inject = ['$uibModal', '$state'];
 
-    function LoginService ($uibModal) {
+    function LoginService ($uibModal, $state) {
         var service = {
             open: open
         };
@@ -20,7 +20,7 @@
         return service;
 
         function open () {
-            if (modalInstance !== null) return;
+           /*if (modalInstance !== null) return;
             modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: 'app/components/login/login.html',
@@ -36,7 +36,9 @@
             modalInstance.result.then(
                 resetModal,
                 resetModal
-            );
+            );*/
+
+            $state.go('home');
         }
     }
 })();
