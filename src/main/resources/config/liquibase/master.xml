@@ -22,13 +22,11 @@
     <include file="classpath:config/liquibase/changelog/20161021112838_added_entity_Unit_used.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161021113047_added_entity_Module_component.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161021113648_added_entity_Component.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20161021113826_added_entity_Order_component.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161021115214_added_entity_Command.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161021115618_added_entity_Command_component.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161021120024_added_entity_Provider.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161021120236_added_entity_Component_nature.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <include file="classpath:config/liquibase/changelog/20161019112550_added_entity_constraints_Finition_ext.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161019114758_added_entity_constraints_Assortment.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161019115257_added_entity_constraints_Pattern.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161020110210_added_entity_constraints_Quotation.xml" relativeToChangelogFile="false"/>
@@ -39,7 +37,6 @@
     <include file="classpath:config/liquibase/changelog/20161021112654_added_entity_constraints_Module_nature.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161021113047_added_entity_constraints_Module_component.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161021113648_added_entity_constraints_Component.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20161021113826_added_entity_constraints_Order_component.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161021115214_added_entity_constraints_Command.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161021115618_added_entity_constraints_Command_component.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161021120236_added_entity_constraints_Component_nature.xml" relativeToChangelogFile="false"/>
