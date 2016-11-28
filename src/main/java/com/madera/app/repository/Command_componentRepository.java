@@ -12,4 +12,7 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface Command_componentRepository extends JpaRepository<Command_component,Long> {
 
+	List<Command_component> findAllByCommandId(Long id);
+	
+	List<Command_component> findAllByComponentId(Long id);
 }

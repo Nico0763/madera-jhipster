@@ -3,6 +3,9 @@ package com.madera.app.repository;
 import com.madera.app.domain.Quotation;
 
 import org.springframework.data.jpa.repository.*;
+import org.springframework.data.repository.query.Param;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -12,4 +15,8 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface QuotationRepository extends JpaRepository<Quotation,Long> {
 
+	@Query("select q from Quotation q where q.name LIKE %:critere%")
+    public Page<Quotation> searchQuotations(Pageable pageable, @Param("critere") String critere);
+
+    List<Quotation> findAllByCustomerId(Long id);
 }

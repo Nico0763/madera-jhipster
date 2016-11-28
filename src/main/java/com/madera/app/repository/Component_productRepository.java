@@ -11,5 +11,5 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface Component_productRepository extends JpaRepository<Component_product,Long> {
-
+	List<Component_product> findAllByProductId(Long id);
 }

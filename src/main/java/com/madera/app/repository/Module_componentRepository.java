@@ -11,5 +11,7 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface Module_componentRepository extends JpaRepository<Module_component,Long> {
+	List<Module_component> findAllByModuleId(Long id);
 
+	List<Module_component> findAllByComponentId(Long id);
 }
