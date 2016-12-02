@@ -1,0 +1,54 @@
+/************************************************/
+/***** madera/navbar/navbar.html *****/
+/************************************************/
+
+// toggle
+.nav-madera--toggle-menu {
+    width: 100%;
+}
+
+.nav-madera--toggle-menu .glyphicon {
+    float: right;
+}
+
+#toggle-menu--main1, #toggle-menu--main2, #toggle-menu--main3 {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: none;
+}
+
+
+/*****************************/
+/***** madera/all *****/
+/****************************/
+
+.madera--top {
+    top: 50px;
+}
+
+.table .table {
+   background-color: $background-color-header-table;
+    color: $color-white;
+}
+
+
+/*********************************/
+/******* login/login.html ********/
+/*********************************/
+
+//formulaire de login
+.row__form-login {
+    label{
+        font-size:20px;
+        margin-top:20px;
+        font-weight:normal;
+    }
+    button{
+        margin-top:20px;
+        height:50px;
+        width:300px;
+        //font-weight:bold;
+        font-size:20px;
+    }
+}

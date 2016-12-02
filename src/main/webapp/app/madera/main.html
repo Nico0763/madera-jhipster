@@ -1,0 +1,156 @@
+<h2 class="text-center" style="text-decoration: underline;">Accueil de l'administration</h2>
+
+<br /><br />
+
+<div class="row">
+	<div class="col-md-3">
+		<table class="table table-stripped">
+			<tr>
+				<th>Pour se rendre au point :</th>
+				<th>Utilisation onglet Info</th>
+			</tr>
+			<tr ng-repeat='elmt in statsElement'>
+				<td>
+					{{elmt.poi.description}}
+				</td>
+				<td>
+					{{elmt.use_help}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Nombre total d'utilisations :
+				</td>
+				<td>
+					{{count}}
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="col-md-3">
+		<table class="table table-stripped">
+			<tr>
+				<th>Point de RDV</th>
+				<th>Nombre d'erreurs de "J'y suis"</th>
+			</tr>
+			<tr ng-repeat="elmt in errorData">
+				<td>{{elmt.name}}</td>
+				<td>{{elmt.value }}</td>
+			</tr>
+			<tr>
+				<td>Total erreurs</td>
+				<td>{{errorCount}}</td>
+			</tr>
+		</table>
+	</div>
+	<div class="col-md-3">
+		<table class="table table-stripped">
+			<tr>
+				<th>
+					Question
+				</th>
+				<th>
+					Réponse
+				</th>
+			</tr>
+			<tr ng-repeat="elmt in dataQuizz">
+				<td>
+					{{elmt.quizz.question}}
+				</td>
+				<td>
+					{{elmt.correct}}
+				</td>
+			</tr>
+			<tr>
+				<td>Total mauvaises réponses</td>
+				<td>{{badAnswerCount}}</td>
+			</tr>
+			<tr>
+				<td>Total bonnes réponses</td>
+				<td>{{goodAnswerCount}}</td>
+			</tr>
+		</table>
+	</div>
+	<div class="col-md-3">
+		<table class="table table-stripped">
+		<tr>
+			<th>Contact</th>
+			<th>Nombre</th>
+		</tr>
+		<tr>
+			<td>Par Sms</td>
+			<td>{{contactCount}}</td>
+		</tr>
+		<tr>
+			<td>Total</td>
+			<td>{{contactCount}}</td>
+		</tr>
+	</table>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<table class="table">
+            <thead class="table table-striped text-center">
+                <tr>
+                    <th>Interval du parcours</th>
+                    <th>Temps de parcours du patient (en minutes)</th>
+                    <th>Moyenne de l'échantillon témoin (en minutes)</th>
+                    <th>Ecart entre les temps de parcours du patient et la moyenne de l'échantillon témoin (en minutes)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="stats_poi in vm.stats_pois track by stats_poi.id">
+                    <td>Temps jusqu'au POI {{$index + 1}}</td>
+                    <td>{{stats_poi.duration | toMinSec}}</td>
+                    <td>{{vm.avg_time[$index].value | toMinSec}}</td>
+                    <td>{{stats_poi.duration / 60 - vm.avg_time[$index].value | toMinSec}}</td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+	<div class="col-md-6">
+		<table class="table">
+            <thead class="table table-striped text-center">
+            <tr>
+                <th>POI</th>
+                <th>Temps de parcours du patient (en minutes)</th>
+                <th>Moyenne de l'échantillon témoin (en minutes)</th>
+                <th>Ecart entre les temps de parcours du patient et la moyenne de l'échantillon témoin (en minutes)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="sum_session in vm.sum_sessions">
+                <td>Temps jusqu'au POI {{$index + 1}}</td>
+                <td>{{sum_session.value | toMinSec}}</td>
+                <td>{{vm.avg_sum_time[$index].value | toMinSec}}</td>
+                <td>{{sum_session.value - vm.avg_sum_time[$index].value | toMinSec}}</td>
+            </tr>
+            </tbody>
+        </table>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<table class="table">
+            <thead class="table table-striped text-center">
+                <tr>
+                    <th>Quizz</th>
+                    <th>Temps passé par le patient (en minutes)</th>
+                    <th>Moyenne de l'échantillon témoin (en minutes)</th>
+                    <th>Ecart entre le temps du patient et moyenne (en minutes)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="temps_quizz in vm.temps_quizzes track by temps_quizz.id">
+                    <td>Quizz numéro {{$index + 1}}</td>
+                    <td>{{temps_quizz.duration / 60 | toMinSec}}</td>
+                    <td>{{vm.avg_temps_quizzes[$index].value | toMinSec}}</td>
+                    <td>{{temps_quizz.duration - vm.avg_temps_quizzes[$index].value | toMinSec}}</td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+</div>
+
+<div id="resume_map" style="height:100%; width: 100%;"></div>

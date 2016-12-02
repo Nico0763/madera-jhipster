@@ -1,0 +1,84 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myAssortmentLabel" data-translate="maderaApp.assortment.home.createOrEditLabel">Create or edit a Assortment</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.assortment.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.assortment.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="maderaApp.assortment.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.assortment.name"
+                    ng-maxlength="50" />
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="50">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setSkeleton_conception_mode($file, vm.assortment)">
+            <label class="control-label" data-translate="maderaApp.assortment.skeleton_conception_mode" for="field_skeleton_conception_mode">Skeleton Conception Mode</label>
+            <div>
+                <div ng-if="vm.assortment.skeleton_conception_mode" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.assortment.skeleton_conception_modeContentType, vm.assortment.skeleton_conception_mode)" data-translate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{vm.assortment.skeleton_conception_modeContentType}}, {{vm.byteSize(vm.assortment.skeleton_conception_mode)}}</span>
+                    <button type="button" ng-click="vm.assortment.skeleton_conception_mode=null;vm.assortment.skeleton_conception_modeContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setSkeleton_conception_mode($file, vm.assortment)" data-translate="entity.action.addblob">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="skeleton_conception_mode" id="field_skeleton_conception_mode"
+                    ng-model="vm.assortment.skeleton_conception_mode"
+                     />
+            <input type="hidden" class="form-control" name="skeleton_conception_modeContentType" id="field_skeleton_conception_modeContentType"
+                    ng-model="vm.assortment.skeleton_conception_modeContentType" />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="maderaApp.assortment.finition_ext" for="field_finition_ext">Finition Ext</label>
+            <select class="form-control" id="field_finition_ext" name="finition_ext" ng-model="vm.assortment.finition_ext" ng-options="finition_ext as finition_ext.id for finition_ext in vm.finition_exts track by finition_ext.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="maderaApp.assortment.insulating_type" for="field_insulating_type">Insulating Type</label>
+            <select class="form-control" id="field_insulating_type" name="insulating_type" ng-model="vm.assortment.insulating_type" ng-options="insulating_type as insulating_type.id for insulating_type in vm.insulating_types track by insulating_type.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="maderaApp.assortment.frame" for="field_frame">Frame</label>
+            <select class="form-control" id="field_frame" name="frame" ng-model="vm.assortment.frame" ng-options="frame as frame.id for frame in vm.frames track by frame.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="maderaApp.assortment.cover_type" for="field_cover_type">Cover Type</label>
+            <select class="form-control" id="field_cover_type" name="cover_type" ng-model="vm.assortment.cover_type" ng-options="cover_type as cover_type.id for cover_type in vm.cover_types track by cover_type.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

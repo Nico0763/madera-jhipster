@@ -1,0 +1,234 @@
+
+/********************************/
+/**** home.html ****/
+/********************************/
+
+ .navbar-debug
+{
+    margin-right:10px; 
+    margin-top:5px;
+    height:40px;
+} 
+
+
+.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 15px 13px;
+}
+
+.navbar-default {
+	 background-color: #293846;
+	 border: none;
+}
+
+.navbar {
+	 background-color: #293846;
+	 border: none;
+}
+
+.navbar-default .navbar-nav > li {
+	color: #55738f;
+	background-color: #293846;
+	-webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+     border: none;
+}
+
+.navbar-default .navbar-nav > li:hover {
+	background-color: $color-madera;
+		-webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.navbar-default .navbar-nav > li:active {
+	background-color: $color-madera;
+	color: #fff;
+}
+
+.navbar-default .navbar-nav > li:focus {
+	background-color: $color-madera;
+	color: #fff;
+}
+
+/****** a normal ******/
+
+.navbar-default .navbar-nav > li > a {
+	color: #55738f;
+	font-family: 'Museo Sans', sans-serif;
+	font-weight: normal;
+	font-size: 15px;
+}
+
+/****** a hover ******/
+
+.navbar-default .navbar-nav > li > a:hover {
+	color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a:active {
+	color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a:focus {
+	color: #fff;
+}
+
+/****** a active ******/
+
+.navbar-default .navbar-nav > .active > a {
+	background-color: $color-madera;
+	color: #fff;
+}
+
+.navbar-default .navbar-nav > .active > a.open {
+    background-color: $color-madera;
+    color: #fff;
+}
+
+.navbar-default .navbar-nav > .active > a:hover {
+	background-color: $color-madera;
+	color: #fff;
+}
+
+.navbar-default .navbar-nav > .active > a:active {
+	background-color: $color-madera;
+	color: #fff;
+}
+
+.navbar-default .navbar-nav > .active > a:focus {
+	background-color: $color-madera;
+	color: #fff;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+background-color: $color-madera;
+    color: #fff;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 14px;
+    text-align: left;
+    background-color: #293846;
+    /* border: 1px solid #ccc; */
+    /* border: 1px solid rgba(0, 0, 0, 0.15); */
+    /* border-radius: 4px; */
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background-clip: padding-box;
+}
+
+.dropdown-menu > li > a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-family: 'Museo Sans', sans-serif;
+    font-weight: normal;
+    line-height: 1.42857;
+    color: #55738f;
+    white-space: nowrap;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.dropdown-menu > li > a:hover {
+    color: #fff;
+    white-space: nowrap;
+    background-color: #3c5369;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.dropdown-menu > li > a:focus {
+    color: #55738f;
+}
+
+.dropdown-menu > li > a:active {
+    color: #55738f;
+}
+
+.navbar-nav > li > .dropdown-menu {
+    margin-top: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border: none;
+}
+
+/*a.navbar {
+	color: #34485b;
+	background-color: #293846;
+	-webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+a.navbar:hover {
+	background-color: #fff;
+}
+
+a.navbar:active {
+	background-color: #fff;
+}*/
+
+
+/*.navbar .navbar-nav > .active > a {
+    color: #fff;
+    background-color:$color-madera;
+}
+
+.navbar .navbar-nav > .active > a:hover {
+
+}
+
+.navbar .navbar-nav > .active > a:focus {
+
+}*/
+
+/****** a hover ******/
+
+.glyphicon-home {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    padding: 0px 5px 0px 0px;
+  }
+
+  .glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+  }

@@ -1,0 +1,36 @@
+/************************************************/
+/***** madera/navbar/navbar.html *****/
+/************************************************/
+
+#wrapper-madera {
+    padding-left: 450px;
+    position: absolute;
+    top: 50px;
+    height: 100%;
+    width: 100%;
+    left : 0px;
+}
+
+#wrapper-madera__sidebar-madera {
+    margin-left: -450px;
+    left: 450px;
+    width: 450px;
+    background-color: $backgorund-color-sidenav;
+    color: $color-white;
+    position: fixed;
+    height: 96%;
+    overflow-y: auto;
+    z-index: 500;
+}
+
+.sidebar-madera__nav-madera {
+    width: 100%;
+    padding: 0 0 50px 0;
+    margin: 0;
+    position: absolute;
+    top: 50px;
+    list-style: none;
+    text-align: center;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}

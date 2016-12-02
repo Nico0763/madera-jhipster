@@ -1,0 +1,20 @@
+#toggle-menu--main1 a, #toggle-menu--main2 a, #toggle-menu--main3 a {
+    display: block;
+    height: 45px;
+    font-size: 17px;
+    padding: 5px 20px;
+    text-decoration: none;
+    width: 100%;
+    color: $color-button;
+}
+
+#toggle-menu--main1 a:hover, #toggle-menu--main2 a:hover, #toggle-menu--main3 a:hover,
+#toggle-menu--main1 a:focus, #toggle-menu--main2 a:focus, #toggle-menu--main3 a:focus {
+    background-color: $background-color-button;
+    color: $color-white;
+}
+
+.nav-madera--toggle-menu ul li a.active,
+.nav-madera--toggle-menu .toggle-menu--btn.active {
+    border-left: 10px solid $color-border-active;
+}

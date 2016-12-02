@@ -1,0 +1,61 @@
+ <div ng-switch="vm.isAuthenticated()" has-authority="ROLE_USER">
+	 <!-- ==============================
+	              Side Menu
+	================================ -->
+	<div id="wrapper-madera" ng-switch="vm.isAuthenticated()" has-authority="ROLE_USER" ng-cloak>
+		    <div id="wrapper-madera__sidebar-madera">
+		        <ul class="sidebar-madera__nav-madera">
+
+		           
+
+		           
+		            <div class="nav-madera--toggle-menu">
+		                <button type="button" class="toggle-menu--btn" data-toggle="#toggle-menu--main1">Gammes&nbsp;<span class="glyphicon glyphicon-triangle-bottom"></span></button>
+		                <ul id="toggle-menu--main1">
+		                    <li><a ui-sref="madera-admin.gammes-configuration">Configuration</a></li>
+		                    <li><a ui-sref="statistiques-indiv.temps-parcours">Types de couverture</a></li>
+		                    <li><a ui-sref="statistiques-indiv.temps-pois">Finitions extérieures</a></li>
+		                    <li><a ui-sref="statistiques-indiv.temps-pois">Types d'isolant</a></li>
+		                    <li><a ui-sref="statistiques-indiv.temps-pois">Huisseries</a></li>
+		                    <li><a ui-sref="statistiques-indiv.temps-pois">Pourcentages commerciaux</a></li>
+		                </ul>
+		            </div>
+		            <div class="nav-madera--toggle-menu">
+		                <button type="button" class="toggle-menu--btn" data-toggle="#toggle-menu--main2">Modules&nbsp;<span class="glyphicon glyphicon-triangle-bottom"></span></button>
+		                <ul id="toggle-menu--main2">
+		                    <li><a ui-sref="statistiques-indiv.erreurs-jysuis">Configuration</a></li>
+		                    <li><a ui-sref="statistiques-indiv.reponses-qcm">Coupes de principe</a></li>
+		                    <li><a ui-sref="statistiques-indiv.temps-pois">Natures</a></li>
+		                </ul>
+		            </div>
+		            <div class="nav-madera--toggle-menu">
+		                <button type="button" class="toggle-menu--btn" data-toggle="#toggle-menu-main3">Composants&nbsp;<span class="glyphicon glyphicon-triangle-bottom"></span></button>
+		                <ul id="toggle-menu--main3">
+		                    <li><a ui-sref="statistiques-indiv.contacts-examinateurs">Configuration</a></li>
+		                    <li><a ui-sref="statistiques-indiv.onglet-info">Natures</a></li>
+		                </ul>
+		            </div>
+		             <div class="nav-madera--toggle-menu">
+		                <button type="button" class="toggle-menu--btn" data-toggle="#toggle-menu-main3">Fournisseurs&nbsp;<span class="glyphicon glyphicon-triangle-bottom"></span></button>
+		                <ul id="toggle-menu--main3">
+		                    <li><a ui-sref="statistiques-indiv.contacts-examinateurs">Configuration</a></li>
+		                    <li><a ui-sref="statistiques-indiv.onglet-info">Commandes</a></li>
+		                </ul>
+		            </div>
+		         
+		        </ul>
+		    </div>
+
+
+		 <div style="height:100%; width: 100%;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	        <div style="height:100%; width: 100%;"  ui-view="main"></div>
+	    </div>
+	  
+	</div>
+	   
+	       
+	    </div>
+</div>
+<div ng-if="vm.isAuthenticated() == false">
+    <div ui-view="login"></div>
+</div>
