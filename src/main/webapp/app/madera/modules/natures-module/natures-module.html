@@ -1,0 +1,124 @@
+<div>
+    <h2 >Natures de module</h2>
+    <jhi-alert></jhi-alert>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="name"><span>Nom</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="caracteristics"><span>Caractéristiques</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="unit_used"><span>Unité d'Usage</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="result in vm.results track by result.id" ng-form="formName">
+                        
+                        <td ng-if="result != vm.select">{{result.name}}</td>
+                        <td ng-if="result == vm.select"><input ng-model="vm.editData.name" class="form-control" type="text" value="{{result.name}}"  name="name" ng-maxlength="50"/>
+                        <span class="input-error" ng-show="!formName.name.$valid">La longueur de ce champs ne doit pas être supérieur à 50 charactères.</span></td>
+
+                        <td ng-if="result != vm.select">{{result.caracteristics}}</td>
+                        <td ng-if="result == vm.select"><input ng-model="vm.editData.caracteristics" class="form-control" type="text" value="{{result.caracteristics}}"  name="caracteristics" ng-maxlength="300"/>
+                        <span class="input-error" ng-show="!formName.caracteristics.$valid">La longueur de ce champs ne doit pas être supérieur à 300 charactères.</span></td>
+
+
+
+
+                       <td ng-if="result != vm.select">{{result.unit_used.name}}</td>
+                        <td ng-if="result == vm.select">
+
+                             <select class="form-control" id="field_unit_used" name="unit_used" ng-model="vm.editData.unit_used" ng-options="unit_used as unit_used.name for unit_used in vm.unit_used track by unit_used.id">
+                                <option value=""></option>
+                            </select>
+                        </td>
+
+                     
+
+
+                    
+                    <td class="text-right">
+                        <div ng-if="result != vm.select" class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ng-click="vm.selectElement(result, vm.editData)"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                      
+                            <button type="submit"
+                                    ui-sref="madera-admin.natures-module.delete({id:result.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+
+                         <div ng-if="result == vm.select" class="btn-group flex-btn-group-container">
+                             <button type="submit"
+                                   ng-click="vm.select=-1"
+                                    class="btn btn-danger btn-sm" style="min-width:90px">
+                                <span class="hidden-xs hidden-sm">Annuler</span>
+                            </button>
+                             <button type="submit"
+                              ng-show="formName.$valid"
+                                    ng-click="vm.save(vm.editData,1)"
+                                    class="btn btn-success btn-sm" style="min-width:90px">
+                                <span class="hidden-xs hidden-sm">Valider</span>
+                            </button>
+                        </div>
+
+                    </td>
+
+
+
+                </tr>
+
+                <!-- Partie ajout -->
+                <tr ng-form="formName">
+                    <td>
+                       <input ng-model="vm.addData.name" class="form-control" type="text"  name="name" ng-maxlength="50"/>
+                       <span class="input-error" ng-show="!formName.name.$valid">La longueur de ce champs ne doit pas être supérieur à 50 charactères.</span>
+                    </td>
+                    <td>
+                       <input ng-model="vm.addData.caracteristics" class="form-control" type="text"  name="caracteristics" ng-maxlength="300"/>
+                       <span class="input-error" ng-show="!formName.caracteristics.$valid">La longueur de ce champs ne doit pas être supérieur à 300 charactères.</span>
+                    </td>
+                    <td>
+                            <select class="form-control" id="field_unit_used" name="unit_used" ng-model="vm.addData.unit_used" ng-options="unit_used as unit_used.name for unit_used in vm.unit_used track by unit_used.id">
+                                <option value=""></option>
+                            </select>
+                    </td>
+
+
+                       
+                    <td>
+                        <div class="btn-group flex-btn-group-container">
+                             <button type="submit"
+                                ng-show="formName.$valid"
+                                    ng-click="vm.save(vm.addData,2)"
+                                    class="btn btn-success btn-sm" style="min-width:90px">
+                                <span class="glyphicon glyphicon-plus"></span>
+                                <span class="hidden-xs hidden-sm">Ajouter</span>
+                            </button>
+                        </div>
+                    </td>
+
+                </tr>
+
+
+
+            </tbody>
+        </table>
+
+
+
+
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

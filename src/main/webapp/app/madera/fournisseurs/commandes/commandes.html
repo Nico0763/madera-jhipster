@@ -1,0 +1,72 @@
+<div>
+    <h2 >Configuration des commandes</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+
+                <h4> Filtrer par état :</h4>
+                <select ng-model="searchState" ng-change="vm.searchByState()" name="state" class="form-control">
+                     <option value="">Toutes
+                    <option value="1">En commande
+                    <option value="2">En attente
+                    <option value="3">Livrée
+                </select>
+            </div>
+            <div class="col-md-4 col-md-offset-8 stats--top">
+                <div class="form-group has-feedback">
+                    <label class="control-label">Rechercher un élément :</label>
+                    <div style="display:inline-block">
+                        <input type="text" my-enter="vm.resetPage(); vm.search()" class="form-control search-input" placeholder="Rechercher" ng-model="searchBox" />
+                         <button type="button" ng-click="vm.resetPage(); vm.search()" class="search-button"><i class="glyphicon glyphicon-search form-control-feedback"></i></button>
+                     </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="row">
+            
+        </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="name"><span>Référence</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="state"><span>État</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="command in vm.commands track by command.id">
+                    <td>{{command.reference}}</td>
+                    <td>{{vm.toState(command.state)}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="madera-admin.commandes.edit({id:command.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="madera-admin.commandes.delete({id:command.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

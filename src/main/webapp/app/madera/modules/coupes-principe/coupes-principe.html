@@ -1,0 +1,69 @@
+<div>
+    <h2 >Coupes de principe</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="madera-admin.coupes-principe.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Ajouter
+                    </span>
+                </button>
+            </div>
+            <div class="col-md-4 col-md-offset-8 stats--top">
+                <div class="form-group has-feedback">
+                    <label class="control-label">Rechercher un élément :</label>
+                    <div style="display:inline-block">
+                        <input type="text" my-enter="vm.resetPage(); vm.search()" class="form-control search-input" placeholder="Rechercher" ng-model="searchBox" />
+                         <button type="button" ng-click="vm.resetPage(); vm.search()" class="search-button"><i class="glyphicon glyphicon-search form-control-feedback"></i></button>
+                     </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="row">
+            
+        </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="name"><span>Nom</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="coupe in vm.coupes track by coupe.id">
+                    <td>{{coupe.name}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="madera-admin.coupes-principe.edit({id:coupe.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            
+                            <button type="submit"
+                                    ui-sref="madera-admin.coupes-principe.delete({id:coupe.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

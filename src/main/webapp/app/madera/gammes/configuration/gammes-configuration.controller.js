@@ -5,9 +5,9 @@
         .module('maderaApp')
         .controller('GammesConfigurationController', GammesConfigurationController);
 
-    GammesConfigurationController.$inject = ['$scope', '$state', 'DataUtils', 'Assortment', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', 'DuplicateGamme'];
+    GammesConfigurationController.$inject = ['$scope', '$state', 'DataUtils', 'Assortment', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', 'DuplicateGamme', 'searchAssortment'];
 
-    function GammesConfigurationController ($scope, $state, DataUtils, Assortment, ParseLinks, AlertService, pagingParams, paginationConstants, DuplicateGamme) {
+    function GammesConfigurationController ($scope, $state, DataUtils, Assortment, ParseLinks, AlertService, pagingParams, paginationConstants, DuplicateGamme, searchAssortment) {
         var vm = this;
         
         vm.loadPage = loadPage;
@@ -18,6 +18,8 @@
         vm.openFile = DataUtils.openFile;
         vm.byteSize = DataUtils.byteSize;
         vm.duplicate = duplicate;
+        vm.search = search;
+        vm.resetpage = resetPage;
 
         loadAll();
 
@@ -66,6 +68,58 @@
                 sort: vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc'),
                 search: vm.currentSearch
             });
+        }
+
+
+         /*** Recherche ***/
+         function search()
+        {
+
+
+           var search = $scope.searchBox;
+           if(search!="" && search != null)
+           {
+             searchAssortment.query({
+                critere: search,
+                page: pagingParams.page - 1,
+                size: vm.itemsPerPage,
+                sort: sort()
+            },onSuccess, onError);
+
+             function sort() {
+                var result = [vm.predicate + ',' + (vm.reverse ? 'desc' : 'asc')];
+                if (vm.predicate !== 'id') {
+                    result.push('id');
+                }
+                return result;
+            }
+           }
+           else
+           {
+            resetPage();
+            loadAll();
+           }
+            
+
+            function onSuccess(data, headers) {
+               // console.log(headers('link'));
+                vm.currentSearch = search;
+                vm.links = ParseLinks.parse(headers('link'));
+                vm.totalItems = headers('X-Total-Count');
+                vm.queryCount = vm.totalItems;
+                vm.assortments = data;
+                vm.page = pagingParams.page;
+            }
+            function onError(error) {
+               console.log(error);
+            }
+        }
+
+        function resetPage()
+        {
+            $state.params.page=1;
+            vm.page = 1;
+            pagingParams.page = 1;
         }
     }
 })();

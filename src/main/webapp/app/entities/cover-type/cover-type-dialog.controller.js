@@ -30,6 +30,7 @@
             if (vm.cover_type.id !== null) {
                 Cover_type.update(vm.cover_type, onSaveSuccess, onSaveError);
             } else {
+               
                 Cover_type.save(vm.cover_type, onSaveSuccess, onSaveError);
             }
         }

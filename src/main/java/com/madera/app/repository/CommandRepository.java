@@ -19,6 +19,6 @@ public interface CommandRepository extends JpaRepository<Command,Long> {
 	@Query("select c from Command c where c.reference LIKE %:critere%")
     public Page<Command> searchCommands(Pageable pageable, @Param("critere") String critere);
 
-    List<Command> findAllByState(Long state);
+    Page<Command> findAllByState(Pageable pageable,Integer state);
 
 }

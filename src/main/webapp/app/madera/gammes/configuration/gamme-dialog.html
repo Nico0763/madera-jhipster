@@ -50,25 +50,25 @@
 
         <div class="form-group">
             <label data-translate="maderaApp.assortment.finition_ext" for="field_finition_ext">Finition Ext</label>
-            <select class="form-control" id="field_finition_ext" name="finition_ext" ng-model="vm.assortment.finition_ext" ng-options="finition_ext as finition_ext.id for finition_ext in vm.finition_exts track by finition_ext.id">
+            <select class="form-control" id="field_finition_ext" name="finition_ext" ng-model="vm.assortment.finition_ext" ng-options="finition_ext as finition_ext.name for finition_ext in vm.finition_exts track by finition_ext.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label data-translate="maderaApp.assortment.insulating_type" for="field_insulating_type">Insulating Type</label>
-            <select class="form-control" id="field_insulating_type" name="insulating_type" ng-model="vm.assortment.insulating_type" ng-options="insulating_type as insulating_type.id for insulating_type in vm.insulating_types track by insulating_type.id">
+            <select class="form-control" id="field_insulating_type" name="insulating_type" ng-model="vm.assortment.insulating_type" ng-options="insulating_type as insulating_type.name for insulating_type in vm.insulating_types track by insulating_type.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label data-translate="maderaApp.assortment.frame" for="field_frame">Frame</label>
-            <select class="form-control" id="field_frame" name="frame" ng-model="vm.assortment.frame" ng-options="frame as frame.id for frame in vm.frames track by frame.id">
+            <select class="form-control" id="field_frame" name="frame" ng-model="vm.assortment.frame" ng-options="frame as frame.name for frame in vm.frames track by frame.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label data-translate="maderaApp.assortment.cover_type" for="field_cover_type">Cover Type</label>
-            <select class="form-control" id="field_cover_type" name="cover_type" ng-model="vm.assortment.cover_type" ng-options="cover_type as cover_type.id for cover_type in vm.cover_types track by cover_type.id">
+            <select class="form-control" id="field_cover_type" name="cover_type" ng-model="vm.assortment.cover_type" ng-options="cover_type as cover_type.name for cover_type in vm.cover_types track by cover_type.id">
                 <option value=""></option>
             </select>
         </div>

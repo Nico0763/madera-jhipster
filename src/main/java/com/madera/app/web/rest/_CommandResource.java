@@ -56,11 +56,14 @@ public class _CommandResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Command> findByState(@PathVariable Long state)
+    public ResponseEntity<List<Command>> findByState(Pageable pageable, @PathVariable Integer state) throws URISyntaxException
     {
         log.debug("REST request to get all commands by state");
 
-        return commandRepository.findAllByState(state);
+          Page<Command> page = commandRepository.findAllByState(pageable, state);
+          HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/commands/state/{state}");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+
     }
 
 }
