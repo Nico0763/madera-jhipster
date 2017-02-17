@@ -21,3 +21,62 @@
 -moz-box-shadow: inset 0px 0px 0px 3px $color-madera;
 box-shadow: inset 0px 0px 0px 3px $color-madera;
 }
+
+
+.input--icon-img
+{
+  float:left;
+  background-color:#4db8af;
+  height:50px;
+  width:50px;
+  display:inline-block;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  .placeholder-icon
+  {
+    width: 50px;
+    height: 50px;
+    color: white !important;
+    font-size: 32px;
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+.input--icon-text{
+  display: inline !important;
+  width: calc(100% - 50px) !important;
+  height: 50px !important;
+  //padding-top: 5px !important;//
+  padding-left: 20px !important;
+  background-color: white !important;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  color: #2f4050 !important;
+    line-height: 16px;
+    font-size: 22px !important;
+    font-family: 'Museo Sans', sans-serif !important;
+    padding-bottom: 5px;
+    text-overflow:ellipsis !important;
+}
+
+.input--icon-text:focus {
+      -webkit-box-shadow: inset 0px 0px 0px 3px #4db8af;
+    -moz-box-shadow: inset 0px 0px 0px 3px #4db8af;
+    box-shadow: inset 0px 0px 0px 3px #4db8af;
+  
+}
+
+.input--icon-date
+{
+  padding-top: 10px !important;
+    color: #2f4050 !important;
+    padding-right: 26px;
+}
+
+.input--icon
+{
+  margin-top:15px;
+}

@@ -3,7 +3,7 @@
     angular
         .module('maderaApp')
         .factory('Quotation', Quotation);
-
+ 
     Quotation.$inject = ['$resource', 'DateUtils'];
 
     function Quotation ($resource, DateUtils) {
