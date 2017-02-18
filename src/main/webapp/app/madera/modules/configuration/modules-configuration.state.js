@@ -129,6 +129,32 @@
                     $state.go('^');
                 });
             }]
+        })
+         .state('madera-admin.modules-configuration.components', {
+            parent: 'madera-admin.modules-configuration',
+            url: '/{id}/components',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/madera/modules/configuration/modules-components.html',
+                    controller: 'ModulesComponentsController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Module', function(Module) {
+                            return Module.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                        
+                }).result.then(function() {
+                    $state.go('madera-admin.modules-configuration', null, { reload: 'madera-admin.modules-configuration' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
         });
     }
 })();

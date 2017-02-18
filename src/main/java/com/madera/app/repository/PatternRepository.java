@@ -11,6 +11,5 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface PatternRepository extends JpaRepository<Pattern,Long> {
-
-	    List<Pattern> findAllByAssortmentId(Long id);
+	List<Pattern> findAllByAssortmentId(Long id);
 }

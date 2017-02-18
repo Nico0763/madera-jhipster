@@ -1,0 +1,114 @@
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPrincipal_cross_sectionLabel">Edition des composants</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div>
+        <div class="form-group">
+
+
+        	 <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="name"><span>Nom</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="module"><span>Quantité</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="cm in vm.cps track by cm.id" ng-form="formName">
+                        
+                        <td>{{cm.component.reference}}</td>
+                        
+
+                        <td ng-if="cm != vm.select">{{cm.quantity}}</td>
+                        <td ng-if="cm == vm.select">
+                            <input type="text" ng-model="vm.editData.quantity" value="{{cm.quantity}}"/>
+                        </td>
+
+                     
+
+
+                    
+                    <td class="text-right">
+                        <div ng-if="cm != vm.select" class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ng-click="vm.selectElement(cm, vm.editData)"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                      
+                             <button type="submit"
+                                   ng-click="vm.deleteComponent(cm)"
+                                    class="btn btn-danger btn-sm" style="min-width:90px">
+                                <span class="hidden-xs hidden-sm">Supprimer</span>
+                            </button>
+                        </div>
+
+                         <div ng-if="cm == vm.select" class="btn-group flex-btn-group-container">
+                             <button type="submit"
+                                   ng-click="vm.select=-1"
+                                    class="btn btn-danger btn-sm" style="min-width:90px">
+                                <span class="hidden-xs hidden-sm">Annuler</span>
+                            </button>
+                             <button type="submit"
+                              ng-show="formName.$valid"
+                                    ng-click="vm.save(vm.editData,1)"
+                                    class="btn btn-success btn-sm" style="min-width:90px">
+                                <span class="hidden-xs hidden-sm">Valider</span>
+                            </button>
+                        </div>
+
+                    </td> 
+                </tr>
+
+                <!-- Partie ajout -->
+                <tr ng-form="formName">
+                   
+                    <td><select class="form-control" id="field_component" name="component" ng-model="vm.addData.component" ng-options="component as component.reference for component in vm.components track by component.id">
+	                  <option value=""></option>
+	               </select></td>
+                    <td><input type="text" class="form-control" name="quantity" ng-model="vm.addData.quantity" /></td>
+                    <td>
+                        <div class="btn-group flex-btn-group-container">
+                             <button type="submit"
+                                ng-show="formName.$valid"
+                                    ng-click="vm.save(vm.addData, 2)"
+                                    class="btn btn-success btn-sm" style="min-width:90px">
+                                <span class="glyphicon glyphicon-plus"></span>
+                                <span class="hidden-xs hidden-sm">Ajouter</span>
+                            </button>
+                        </div>
+                    </td>
+
+                </tr>
+
+
+
+            </tbody>
+        </table>
+
+
+
+
+
+
+
+        	
+
+
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ok"></span>&nbsp;<span>Fermer</span>
+        </button>
+        
+    </div>

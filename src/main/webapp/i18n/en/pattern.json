@@ -17,6 +17,7 @@
                 "title": "Pattern"
             },
             "name": "Name",
+            "image": "Image",
             "assortment": "Assortment",
             "product": "Product"
         }

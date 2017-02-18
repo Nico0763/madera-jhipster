@@ -21,4 +21,7 @@ public interface ModuleRepository extends JpaRepository<Module,Long> {
 	@Query("select m from Module m, Module_nature n where m.module_nature = n AND n.id =:id")
     public List<Module> findByNature(@Param("id") Long id);
    
+
+   	@Query("select m from Module m, Assortment a where m.assortment = a AND a.id =:id")
+    public List<Module> findByAssortment(@Param("id") Long id);
 }

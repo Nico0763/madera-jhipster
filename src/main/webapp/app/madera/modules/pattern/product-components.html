@@ -1,0 +1,118 @@
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPrincipal_cross_sectionLabel">Edition des composants - {{vm.product.name}}</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div>
+        <div class="form-group">
+
+
+        	 <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="name"><span>Nom</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="module"><span>Angle</span> <span class="glyphicon glyphicon-sort"></span></th>
+                      <th jh-sort-by="module"><span>Unité d'usage</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="module"><span>Longueur</span> <span class="glyphicon glyphicon-sort"></span></th>
+                  
+                    <th></th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="cp in vm.components track by cp.id" ng-form="formComponent">
+           
+                        <td>{{cp.component.reference}}</td>
+
+
+                        <td ng-if="cp != vm.select">{{cp.angle}}</td>
+                        <td ng-if="cp == vm.select"><input ng-model="vm.editData.angle" class="form-control" type="text" value="{{cp.angle}}"  name="angle"/></td>
+
+
+
+                        <td>{{cp.component.component_nature.unit_used.name}}</td>
+                        
+
+                        <td ng-if="cp != vm.select">{{cp.length}}</td>
+                        <td ng-if="cp == vm.select">
+                              <input type="text" class="form-control" name="length" id="field_length"  value="{{cp.length}}" 
+                                    ng-model="vm.editData.length"
+                                    ng-pattern="{{cp.component.component_nature.unit_used.regular_expression}}" />
+                                    <div ng-show="formComponent.length.$invalid">
+                                        <p class="help-block"
+                                            ng-show="formComponent.length.$error.pattern">
+                                            Ce champs doit suivre le pattern {{cp.component.component_nature.unit_used.regular_expression}}
+                                        </p>
+                                    </div>
+                        </td>
+                    
+
+                      
+
+                        
+                       
+                        
+
+                       
+
+
+                    
+                    <td class="text-right">
+                        <div ng-if="cp != vm.select" class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ng-click="vm.selectElement(cp, vm.editData)"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                        </div>
+
+                         <div ng-if="cp == vm.select" class="btn-group flex-btn-group-container">
+                             <button type="submit"
+                                   ng-click="vm.select=-1"
+                                    class="btn btn-danger btn-sm" style="min-width:90px">
+                                <span class="hidden-xs hidden-sm">Annuler</span>
+                            </button>
+                             <button type="submit"
+                              ng-show="formComponent.$valid"
+                                    ng-click="vm.save(vm.editData)"
+                                    class="btn btn-success btn-sm" style="min-width:90px">
+                                <span class="hidden-xs hidden-sm">Valider</span>
+                            </button>
+                        </div>
+
+                    </td>
+
+
+
+                </tr>
+
+               
+
+
+
+            </tbody>
+        </table>
+
+
+
+
+
+
+
+        	
+
+
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ok"></span>&nbsp;<span>Fermer</span>
+        </button>
+        
+    </div>

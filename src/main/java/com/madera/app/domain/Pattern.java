@@ -29,6 +29,13 @@ public class Pattern implements Serializable {
     @Column(name = "name", length = 50)
     private String name;
 
+    @Lob
+    @Column(name = "image")
+    private byte[] image;
+
+    @Column(name = "image_content_type")
+    private String imageContentType;
+
     @ManyToOne
     private Assortment assortment;
 
@@ -56,6 +63,32 @@ public class Pattern implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public Pattern image(byte[] image) {
+        this.image = image;
+        return this;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public String getImageContentType() {
+        return imageContentType;
+    }
+
+    public Pattern imageContentType(String imageContentType) {
+        this.imageContentType = imageContentType;
+        return this;
+    }
+
+    public void setImageContentType(String imageContentType) {
+        this.imageContentType = imageContentType;
     }
 
     public Assortment getAssortment() {
@@ -121,6 +154,8 @@ public class Pattern implements Serializable {
         return "Pattern{" +
             "id=" + id +
             ", name='" + name + "'" +
+            ", image='" + image + "'" +
+            ", imageContentType='" + imageContentType + "'" +
             '}';
     }
 }

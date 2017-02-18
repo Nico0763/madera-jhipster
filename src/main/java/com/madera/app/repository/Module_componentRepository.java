@@ -14,4 +14,5 @@ public interface Module_componentRepository extends JpaRepository<Module_compone
 	List<Module_component> findAllByModuleId(Long id);
 
 	List<Module_component> findAllByComponentId(Long id);
+
 }

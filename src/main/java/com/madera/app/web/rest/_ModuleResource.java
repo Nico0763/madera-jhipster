@@ -126,4 +126,14 @@ public class _ModuleResource {
     }
 
 
+    @RequestMapping(value="/modules/assortment/{id}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<Module> findByAssortmentId(@PathVariable Long id)
+    {
+        log.debug("REST request to get all modules by assortment id");
+
+        return moduleRepository.findByAssortment(id);
+    }
 }

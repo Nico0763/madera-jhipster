@@ -22,6 +22,11 @@
                 "maxlength"
             ],
             "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
         }
     ],
     "changelogDate": "20161019115257",
