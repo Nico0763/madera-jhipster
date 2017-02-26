@@ -5,9 +5,9 @@
         .module('maderaApp')
         .controller('Finition_extController', Finition_extController);
 
-    Finition_extController.$inject = ['$scope', '$state', 'DataUtils', 'Finition_ext', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants'];
+    Finition_extController.$inject = ['$scope', '$state', 'Finition_ext', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants'];
 
-    function Finition_extController ($scope, $state, DataUtils, Finition_ext, ParseLinks, AlertService, pagingParams, paginationConstants) {
+    function Finition_extController ($scope, $state, Finition_ext, ParseLinks, AlertService, pagingParams, paginationConstants) {
         var vm = this;
         
         vm.loadPage = loadPage;
@@ -15,8 +15,6 @@
         vm.reverse = pagingParams.ascending;
         vm.transition = transition;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
-        vm.openFile = DataUtils.openFile;
-        vm.byteSize = DataUtils.byteSize;
 
         loadAll();
 

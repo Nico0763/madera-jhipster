@@ -5,9 +5,9 @@
         .module('maderaApp')
         .controller('TypesCouvertureDeleteController',TypesCouvertureDeleteController);
 
-    TypesCouvertureDeleteController.$inject = ['$uibModalInstance', 'entity', 'Cover_type'];
+    TypesCouvertureDeleteController.$inject = ['$uibModalInstance', 'entity', 'Cover_type', 'ImageRemoveFile'];
 
-    function TypesCouvertureDeleteController($uibModalInstance, entity, Cover_type) {
+    function TypesCouvertureDeleteController($uibModalInstance, entity, Cover_type, ImageRemoveFile) {
         var vm = this;
 
         vm.cover_type = entity;
@@ -19,6 +19,15 @@
         }
 
         function confirmDelete (id) {
+
+
+            var deleteId = vm.cover_type.url;
+
+            if(deleteId != "" && deleteId != null && deleteId != undefined)
+            {   
+                ImageRemoveFile.delete({url:deleteId});
+            }
+
             Cover_type.delete({id: id},
                 function () {
                     $uibModalInstance.close(true);

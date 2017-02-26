@@ -80,7 +80,7 @@ class Finition_extGatlingTest extends Simulation {
             .exec(http("Create new finition_ext")
             .post("/api/finition-exts")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "image":null, "name":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "url":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_finition_ext_url"))).exitHereIfFailed
             .pause(10)

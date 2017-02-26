@@ -12,14 +12,9 @@
         <dd>
             <span>{{vm.principal_cross_section.description}}</span>
         </dd>
-        <dt><span data-translate="maderaApp.principal_cross_section.image">Image</span></dt>
+        <dt><span data-translate="maderaApp.principal_cross_section.url">Url</span></dt>
         <dd>
-            <div ng-if="vm.principal_cross_section.image">
-                <a ng-click="vm.openFile(vm.principal_cross_section.imageContentType, vm.principal_cross_section.image)">
-                    <img data-ng-src="{{'data:' + vm.principal_cross_section.imageContentType + ';base64,' + vm.principal_cross_section.image}}" style="max-width: 100%;"/>
-                </a>
-                {{vm.principal_cross_section.imageContentType}}, {{vm.byteSize(vm.principal_cross_section.image)}}
-            </div>
+            <span>{{vm.principal_cross_section.url}}</span>
         </dd>
     </dl>
 

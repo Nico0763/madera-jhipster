@@ -21,7 +21,7 @@
             "fieldValidateRules": [
                 "max"
             ],
-            "fieldValidateRulesMax": "9"
+            "fieldValidateRulesMax": "360"
         },
         {
             "fieldName": "length",

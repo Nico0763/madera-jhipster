@@ -5,15 +5,13 @@
         .module('maderaApp')
         .controller('ComponentDialogController', ComponentDialogController);
 
-    ComponentDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Component', 'Component_product', 'Module_component', 'Provider', 'Component_nature', 'Command_component'];
+    ComponentDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Component', 'Component_product', 'Module_component', 'Provider', 'Component_nature', 'Command_component'];
 
-    function ComponentDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Component, Component_product, Module_component, Provider, Component_nature, Command_component) {
+    function ComponentDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Component, Component_product, Module_component, Provider, Component_nature, Command_component) {
         var vm = this;
 
         vm.component = entity;
         vm.clear = clear;
-        vm.byteSize = DataUtils.byteSize;
-        vm.openFile = DataUtils.openFile;
         vm.save = save;
         vm.component_products = Component_product.query();
         vm.module_components = Module_component.query();
@@ -48,20 +46,6 @@
             vm.isSaving = false;
         }
 
-
-        vm.setImage = function ($file, component) {
-            if ($file && $file.$error === 'pattern') {
-                return;
-            }
-            if ($file) {
-                DataUtils.toBase64($file, function(base64Data) {
-                    $scope.$apply(function() {
-                        component.image = base64Data;
-                        component.imageContentType = $file.type;
-                    });
-                });
-            }
-        };
 
     }
 })();

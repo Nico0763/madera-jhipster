@@ -5,9 +5,9 @@
         .module('maderaApp')
         .controller('_PatternController', _PatternController);
 
-    _PatternController.$inject = ['$scope', '$state', 'DataUtils', 'Pattern', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', 'Assortment'];
+    _PatternController.$inject = ['$scope', '$state', 'DataUtils', 'Pattern', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', 'Assortment', 'ImageSaveFile', 'ImageResize','ImageRemoveFile'];
 
-    function _PatternController ($scope, $state, DataUtils, Pattern, ParseLinks, AlertService, pagingParams, paginationConstants, Assortment) {
+    function _PatternController ($scope, $state, DataUtils, Pattern, ParseLinks, AlertService, pagingParams, paginationConstants, Assortment, ImageSaveFile, ImageResize,ImageRemoveFile) {
         var vm = this;
         
         vm.loadPage = loadPage;
@@ -22,8 +22,8 @@
         vm.save = save;
 
 
-        vm.editData = {name:null,assortment:null, image:null, imageContentType:null};
-        vm.addData = {name:null, assortment:null, image:null, imageContentType:null,id:null};
+        vm.editData = {name:null,assortment:null, url:null};
+        vm.addData = {name:null, assortment:null, url:null,id:null};
 
         vm.select = null;
         vm.assortment = Assortment.query();
@@ -84,64 +84,80 @@
 
         function save(data,type)
         {
-            console.log("save");
 
             if(type == 1 && vm.select != null)
             {
             
-                    vm.select.name = data.name;
-                    vm.select.assortment = data.assortment;
-      
-                    vm.select.image = data.image;
-                    vm.select.imageContentType= data.imageContentType;
-               
+                    
+                     vm.select.name = data.name;
+                        vm.select.assortment = data.assortment;
 
-            
-            
-                Pattern.update(vm.select, function(success)
-                    {
-                        console.debug(success)
-                    }, function(error) {
-                        console.debug(error);
-                    });
-                vm.select = null;
+                     saveImage(function(data)
+                    {                        
+                        Pattern.update(data, function(success)
+                        {
+                            console.debug(success)
+                        }, function(error) {
+                            console.debug(error);
+                        });
+                        vm.select = null;
+                    },'fileinfo',  vm.select,500,500);  
                 
             }
             else if(type==2)
             {
-                Pattern.save({name:data.name, image:data.image, imageContentType:data.imageContentType, assortment:data.assortment}, function(success)
+                saveImage(function(data)
                     {
-                        console.debug(success)
-                        $state.reload();
-                    }, function(error) {
-                        console.debug(error);
-                    });
+                            Pattern.save(data, function(success)
+                        {
+                            console.debug(success)
+                            $state.reload();
+                        }, function(error) {
+                            console.debug(error);
+                        });
+                        vm.select = null;
+
+
+                    },'fileaddinfo',data,500,500);
             }
 
-            data.name = null;
-            data.image = null;
-            data.assortment = null;
-            data.imageContentType = null;
 
 
         }
 
 
-        vm.setImage = function ($file, data) {
-            
-            
-            if ($file && $file.$error === 'pattern') {
+        function saveImage(callback, formName,  data, width,height)
+        {
+            var file = document.forms[formName]['fileUploadImage'].files[0];
+            if(file==null)
+            {
+                callback(data);
                 return;
             }
-            if ($file) {
-                DataUtils.toBase64($file, function(base64Data) {
-                    $scope.$apply(function() {
-                        data.image = base64Data;
-                        data.imageContentType = $file.type;
-                    });
-                });
+          //  ImageRemoveFile.remove({url:deleteId});
+            //Delete de l'ancien
+            if(data.url != "" && data.url != null && data.url != undefined)
+            {   
+                ImageRemoveFile.delete({url:data.url});
             }
-        };
+           ImageResize.resize(file,width,height,function(cropFile) {
+            if(cropFile != null && cropFile != undefined)
+            {
+                var form = document.forms.namedItem("fileinfo");
+                var fd = new FormData(form); 
+                fd.delete("fileUploadImage");
+                fd.append("fileUploadImage", cropFile);
+
+                 ImageSaveFile.save(fd,function(dataUrl)
+                    {
+                    
+                        data.url = dataUrl.url;
+                        callback(data);
+                    });  
+             }
+           });
+            
+        }
 
 
        

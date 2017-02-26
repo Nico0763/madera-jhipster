@@ -8,14 +8,9 @@
         <dd>
             <span>{{vm.frame.name}}</span>
         </dd>
-        <dt><span data-translate="maderaApp.frame.image">Image</span></dt>
+        <dt><span data-translate="maderaApp.frame.url">Url</span></dt>
         <dd>
-            <div ng-if="vm.frame.image">
-                <a ng-click="vm.openFile(vm.frame.imageContentType, vm.frame.image)">
-                    <img data-ng-src="{{'data:' + vm.frame.imageContentType + ';base64,' + vm.frame.image}}" style="max-width: 100%;"/>
-                </a>
-                {{vm.frame.imageContentType}}, {{vm.byteSize(vm.frame.image)}}
-            </div>
+            <span>{{vm.frame.url}}</span>
         </dd>
     </dl>
 

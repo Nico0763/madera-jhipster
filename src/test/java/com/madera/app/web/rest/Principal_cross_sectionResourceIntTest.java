@@ -19,7 +19,6 @@ import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Base64Utils;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -45,10 +44,8 @@ public class Principal_cross_sectionResourceIntTest {
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
 
-    private static final byte[] DEFAULT_IMAGE = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_IMAGE = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_IMAGE_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_IMAGE_CONTENT_TYPE = "image/png";
+    private static final String DEFAULT_URL = "AAAAA";
+    private static final String UPDATED_URL = "BBBBB";
 
     @Inject
     private Principal_cross_sectionRepository principal_cross_sectionRepository;
@@ -86,8 +83,7 @@ public class Principal_cross_sectionResourceIntTest {
         Principal_cross_section principal_cross_section = new Principal_cross_section()
                 .name(DEFAULT_NAME)
                 .description(DEFAULT_DESCRIPTION)
-                .image(DEFAULT_IMAGE)
-                .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE);
+                .url(DEFAULT_URL);
         return principal_cross_section;
     }
 
@@ -114,8 +110,7 @@ public class Principal_cross_sectionResourceIntTest {
         Principal_cross_section testPrincipal_cross_section = principal_cross_sections.get(principal_cross_sections.size() - 1);
         assertThat(testPrincipal_cross_section.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testPrincipal_cross_section.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
-        assertThat(testPrincipal_cross_section.getImage()).isEqualTo(DEFAULT_IMAGE);
-        assertThat(testPrincipal_cross_section.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
+        assertThat(testPrincipal_cross_section.getUrl()).isEqualTo(DEFAULT_URL);
     }
 
     @Test
@@ -131,8 +126,7 @@ public class Principal_cross_sectionResourceIntTest {
                 .andExpect(jsonPath("$.[*].id").value(hasItem(principal_cross_section.getId().intValue())))
                 .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
                 .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
-                .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
-                .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))));
+                .andExpect(jsonPath("$.[*].url").value(hasItem(DEFAULT_URL.toString())));
     }
 
     @Test
@@ -148,8 +142,7 @@ public class Principal_cross_sectionResourceIntTest {
             .andExpect(jsonPath("$.id").value(principal_cross_section.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
-            .andExpect(jsonPath("$.imageContentType").value(DEFAULT_IMAGE_CONTENT_TYPE))
-            .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)));
+            .andExpect(jsonPath("$.url").value(DEFAULT_URL.toString()));
     }
 
     @Test
@@ -172,8 +165,7 @@ public class Principal_cross_sectionResourceIntTest {
         updatedPrincipal_cross_section
                 .name(UPDATED_NAME)
                 .description(UPDATED_DESCRIPTION)
-                .image(UPDATED_IMAGE)
-                .imageContentType(UPDATED_IMAGE_CONTENT_TYPE);
+                .url(UPDATED_URL);
 
         restPrincipal_cross_sectionMockMvc.perform(put("/api/principal-cross-sections")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -186,8 +178,7 @@ public class Principal_cross_sectionResourceIntTest {
         Principal_cross_section testPrincipal_cross_section = principal_cross_sections.get(principal_cross_sections.size() - 1);
         assertThat(testPrincipal_cross_section.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testPrincipal_cross_section.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testPrincipal_cross_section.getImage()).isEqualTo(UPDATED_IMAGE);
-        assertThat(testPrincipal_cross_section.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
+        assertThat(testPrincipal_cross_section.getUrl()).isEqualTo(UPDATED_URL);
     }
 
     @Test

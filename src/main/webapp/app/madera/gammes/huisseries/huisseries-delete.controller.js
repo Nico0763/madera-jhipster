@@ -5,9 +5,9 @@
         .module('maderaApp')
         .controller('HuisseriesDeleteController',HuisseriesDeleteController);
 
-    HuisseriesDeleteController.$inject = ['$uibModalInstance', 'entity', 'Frame'];
+    HuisseriesDeleteController.$inject = ['$uibModalInstance', 'entity', 'Frame', 'ImageRemoveFile'];
 
-    function HuisseriesDeleteController($uibModalInstance, entity, Frame) {
+    function HuisseriesDeleteController($uibModalInstance, entity, Frame, ImageRemoveFile) {
         var vm = this;
 
         vm.frame = entity;
@@ -19,6 +19,15 @@
         }
 
         function confirmDelete (id) {
+
+
+            var deleteId = vm.frame.url;
+
+            if(deleteId != "" && deleteId != null && deleteId != undefined)
+            {   
+                ImageRemoveFile.delete({url:deleteId});
+            }
+
             Frame.delete({id: id},
                 function () {
                     $uibModalInstance.close(true);

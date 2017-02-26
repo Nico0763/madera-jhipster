@@ -5,9 +5,9 @@
         .module('maderaApp')
         .controller('CoupesPrincipeDialogController', CoupesPrincipeDialogController);
 
-    CoupesPrincipeDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Principal_cross_section', 'Module'];
+    CoupesPrincipeDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Principal_cross_section', 'Module', 'ImageSaveFile', 'ImageResize','ImageRemoveFile'];
 
-    function CoupesPrincipeDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Principal_cross_section, Module) {
+    function CoupesPrincipeDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Principal_cross_section, Module, ImageSaveFile, ImageResize,ImageRemoveFile) {
         var vm = this;
 
         vm.principal_cross_section = entity;
@@ -16,6 +16,8 @@
         vm.openFile = DataUtils.openFile;
         vm.save = save;
         vm.modules = Module.query();
+
+       vm.file =null;
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -26,11 +28,22 @@
         }
 
         function save () {
-            vm.isSaving = true;
+             vm.isSaving = true;
             if (vm.principal_cross_section.id !== null) {
-                Principal_cross_section.update(vm.principal_cross_section, onSaveSuccess, onSaveError);
+
+                //Update
+                    saveImage(function(data)
+                    {                        
+                       Principal_cross_section.update(vm.principal_cross_section, onSaveSuccess, onSaveError);
+                    },'fileinfo',  vm.principal_cross_section,400,400);
+
             } else {
-                Principal_cross_section.save(vm.principal_cross_section, onSaveSuccess, onSaveError);
+
+                saveImage(function(data)
+                    {
+                        Principal_cross_section.save(vm.principal_cross_section, onSaveSuccess, onSaveError);
+                    },'fileinfo',vm.principal_cross_section,400,400);
+
             }
         }
 
@@ -45,19 +58,46 @@
         }
 
 
-        vm.setImage = function ($file, principal_cross_section) {
-            if ($file && $file.$error === 'pattern') {
+       function saveImage(callback, formName,  data, width,height)
+        {
+            var file = vm.file;
+            if(file==null)
+            {
+                callback(data);
                 return;
             }
-            if ($file) {
-                DataUtils.toBase64($file, function(base64Data) {
-                    $scope.$apply(function() {
-                        principal_cross_section.image = base64Data;
-                        principal_cross_section.imageContentType = $file.type;
-                    });
-                });
+          //  ImageRemoveFile.remove({url:deleteId});
+            //Delete de l'ancien
+            if(data.url != "" && data.url != null && data.url != undefined)
+            {   
+                ImageRemoveFile.delete({url:data.url});
             }
-        };
+           ImageResize.resize(file,width,height,function(cropFile) {
+            if(cropFile != null && cropFile != undefined)
+            {
+                var form = document.forms.namedItem("fileinfo");
+                var fd = new FormData(form); 
+                fd.delete("fileUploadImage");
+                fd.append("fileUploadImage", cropFile);
+
+                 ImageSaveFile.save(fd,function(dataUrl)
+                    {
+                    
+                        data.url = dataUrl.url;
+                        callback(data);
+                    });  
+             }
+           });
+            
+        }
+
+
+
+        vm.setImage = function(f)
+        {
+            console.debug(f);
+           vm.file = f;
+        }
 
     }
 })();

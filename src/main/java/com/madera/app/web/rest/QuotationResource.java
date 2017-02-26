@@ -41,7 +41,7 @@ public class QuotationResource {
      * @param quotation the quotation to create
      * @return the ResponseEntity with status 201 (Created) and with body the new quotation, or with status 400 (Bad Request) if the quotation has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
+     */ 
     @RequestMapping(value = "/quotations",
         method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)

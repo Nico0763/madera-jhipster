@@ -5,9 +5,9 @@
         .module('maderaApp')
         .controller('FrameController', FrameController);
 
-    FrameController.$inject = ['$scope', '$state', 'DataUtils', 'Frame', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants'];
+    FrameController.$inject = ['$scope', '$state', 'Frame', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants'];
 
-    function FrameController ($scope, $state, DataUtils, Frame, ParseLinks, AlertService, pagingParams, paginationConstants) {
+    function FrameController ($scope, $state, Frame, ParseLinks, AlertService, pagingParams, paginationConstants) {
         var vm = this;
         
         vm.loadPage = loadPage;
@@ -15,8 +15,6 @@
         vm.reverse = pagingParams.ascending;
         vm.transition = transition;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
-        vm.openFile = DataUtils.openFile;
-        vm.byteSize = DataUtils.byteSize;
 
         loadAll();
 

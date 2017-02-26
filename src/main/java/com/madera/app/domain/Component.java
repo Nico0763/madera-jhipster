@@ -2,8 +2,9 @@ package com.madera.app.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.validation.constraints.Pattern;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -25,16 +26,12 @@ public class Component implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "url")
+    private String url;
+
     @Pattern(regexp = "^[0-9]{4}-[0-9]{2}-[A-Z]-[A-Z]$")
     @Column(name = "reference")
     private String reference;
-
-    @Lob
-    @Column(name = "image")
-    private byte[] image;
-
-    @Column(name = "image_content_type")
-    private String imageContentType;
 
     @OneToMany(mappedBy = "component")
     @JsonIgnore
@@ -65,6 +62,19 @@ public class Component implements Serializable {
         this.id = id;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public Component url(String url) {
+        this.url = url;
+        return this;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public String getReference() {
         return reference;
     }
@@ -76,32 +86,6 @@ public class Component implements Serializable {
 
     public void setReference(String reference) {
         this.reference = reference;
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public Component image(byte[] image) {
-        this.image = image;
-        return this;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
-    public String getImageContentType() {
-        return imageContentType;
-    }
-
-    public Component imageContentType(String imageContentType) {
-        this.imageContentType = imageContentType;
-        return this;
-    }
-
-    public void setImageContentType(String imageContentType) {
-        this.imageContentType = imageContentType;
     }
 
     public Set<Component_product> getComponent_products() {
@@ -229,9 +213,8 @@ public class Component implements Serializable {
     public String toString() {
         return "Component{" +
             "id=" + id +
+            ", url='" + url + "'" +
             ", reference='" + reference + "'" +
-            ", image='" + image + "'" +
-            ", imageContentType='" + imageContentType + "'" +
             '}';
     }
 }

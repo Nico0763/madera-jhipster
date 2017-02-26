@@ -19,8 +19,8 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="url"><span data-translate="maderaApp.component.url">Url</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="reference"><span data-translate="maderaApp.component.reference">Reference</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="image"><span data-translate="maderaApp.component.image">Image</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="provider.id"><span data-translate="maderaApp.component.provider">Provider</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="component_nature.id"><span data-translate="maderaApp.component.component_nature">Component Nature</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
@@ -29,13 +29,8 @@
             <tbody>
                 <tr ng-repeat="component in vm.components track by component.id">
                     <td><a ui-sref="component-detail({id:component.id})">{{component.id}}</a></td>
+                    <td>{{component.url}}</td>
                     <td>{{component.reference}}</td>
-                    <td>
-                        <a ng-if="component.image" ng-click="vm.openFile(component.imageContentType, component.image)">
-                            <img data-ng-src="{{'data:' + component.imageContentType + ';base64,' + component.image}}" style="max-height: 30px;"/>
-                        </a>
-                        <span ng-if="component.image">{{component.imageContentType}}, {{vm.byteSize(component.image)}}</span>
-                    </td>
                     <td>
                         <a ui-sref="provider-detail({id:component.provider.id})">{{component.provider.id}}</a>
                     </td>

@@ -22,7 +22,7 @@ public class Component_product implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Max(value = 9)
+    @Max(value = 360)
     @Column(name = "angle")
     private Integer angle;
 

@@ -14,6 +14,12 @@
                     ng-model="vm.component.id" readonly />
         </div>
         <div class="form-group">
+            <label class="control-label" data-translate="maderaApp.component.url" for="field_url">Url</label>
+            <input type="text" class="form-control" name="url" id="field_url"
+                    ng-model="vm.component.url"
+                     />
+        </div>
+        <div class="form-group">
             <label class="control-label" data-translate="maderaApp.component.reference" for="field_reference">Reference</label>
             <input type="text" class="form-control" name="reference" id="field_reference"
                     ng-model="vm.component.reference"
@@ -24,28 +30,6 @@
                     This field should follow pattern "^[0-9]{4}-[0-9]{2}-[A-Z]-[A-Z]$".
                 </p>
             </div>
-        </div>
-        <div class="form-group" ngf-drop ngf-change="vm.setImage($file, vm.component)" ngf-pattern="'image/*'">
-            <label class="control-label" data-translate="maderaApp.component.image" for="field_image">Image</label>
-            <div>
-                <img data-ng-src="{{'data:' + vm.component.imageContentType + ';base64,' + vm.component.image}}" style="max-height: 100px;" ng-if="vm.component.image"/>
-                <div ng-if="vm.component.image" class="help-block clearfix">
-                    <span class="pull-left">{{vm.component.imageContentType}}, {{vm.byteSize(vm.component.image)}}</span>
-                    <button type="button" ng-click="vm.component.image=null;vm.component.imageContentType=null;"
-                            class="btn btn-default btn-xs pull-right">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-                </div>
-                <button type="button" ngf-select class="btn btn-default btn-block"
-                        ngf-change="vm.setImage($file, vm.component)" accept="image/*" data-translate="entity.action.addimage">
-                    Add image
-                </button>
-            </div>
-            <input type="hidden" class="form-control" name="image" id="field_image"
-                    ng-model="vm.component.image"
-                     />
-            <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
-                    ng-model="vm.component.imageContentType" />
         </div>
 
         <div class="form-group">

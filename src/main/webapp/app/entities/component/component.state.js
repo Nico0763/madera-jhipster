@@ -124,9 +124,8 @@
                     resolve: {
                         entity: function () {
                             return {
+                                url: null,
                                 reference: null,
-                                image: null,
-                                imageContentType: null,
                                 id: null
                             };
                         }

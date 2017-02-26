@@ -19,7 +19,6 @@ import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Base64Utils;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -39,13 +38,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = MaderaApp.class)
 public class Finition_extResourceIntTest {
 
-    private static final byte[] DEFAULT_IMAGE = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_IMAGE = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_IMAGE_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_IMAGE_CONTENT_TYPE = "image/png";
-
     private static final String DEFAULT_NAME = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
+
+    private static final String DEFAULT_URL = "AAAAA";
+    private static final String UPDATED_URL = "BBBBB";
 
     @Inject
     private Finition_extRepository finition_extRepository;
@@ -81,9 +78,8 @@ public class Finition_extResourceIntTest {
      */
     public static Finition_ext createEntity(EntityManager em) {
         Finition_ext finition_ext = new Finition_ext()
-                .image(DEFAULT_IMAGE)
-                .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE)
-                .name(DEFAULT_NAME);
+                .name(DEFAULT_NAME)
+                .url(DEFAULT_URL);
         return finition_ext;
     }
 
@@ -108,9 +104,8 @@ public class Finition_extResourceIntTest {
         List<Finition_ext> finition_exts = finition_extRepository.findAll();
         assertThat(finition_exts).hasSize(databaseSizeBeforeCreate + 1);
         Finition_ext testFinition_ext = finition_exts.get(finition_exts.size() - 1);
-        assertThat(testFinition_ext.getImage()).isEqualTo(DEFAULT_IMAGE);
-        assertThat(testFinition_ext.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
         assertThat(testFinition_ext.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testFinition_ext.getUrl()).isEqualTo(DEFAULT_URL);
     }
 
     @Test
@@ -124,9 +119,8 @@ public class Finition_extResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(finition_ext.getId().intValue())))
-                .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
-                .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))))
-                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+                .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+                .andExpect(jsonPath("$.[*].url").value(hasItem(DEFAULT_URL.toString())));
     }
 
     @Test
@@ -140,9 +134,8 @@ public class Finition_extResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(finition_ext.getId().intValue()))
-            .andExpect(jsonPath("$.imageContentType").value(DEFAULT_IMAGE_CONTENT_TYPE))
-            .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.url").value(DEFAULT_URL.toString()));
     }
 
     @Test
@@ -163,9 +156,8 @@ public class Finition_extResourceIntTest {
         // Update the finition_ext
         Finition_ext updatedFinition_ext = finition_extRepository.findOne(finition_ext.getId());
         updatedFinition_ext
-                .image(UPDATED_IMAGE)
-                .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
-                .name(UPDATED_NAME);
+                .name(UPDATED_NAME)
+                .url(UPDATED_URL);
 
         restFinition_extMockMvc.perform(put("/api/finition-exts")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -176,9 +168,8 @@ public class Finition_extResourceIntTest {
         List<Finition_ext> finition_exts = finition_extRepository.findAll();
         assertThat(finition_exts).hasSize(databaseSizeBeforeUpdate);
         Finition_ext testFinition_ext = finition_exts.get(finition_exts.size() - 1);
-        assertThat(testFinition_ext.getImage()).isEqualTo(UPDATED_IMAGE);
-        assertThat(testFinition_ext.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
         assertThat(testFinition_ext.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testFinition_ext.getUrl()).isEqualTo(UPDATED_URL);
     }
 
     @Test

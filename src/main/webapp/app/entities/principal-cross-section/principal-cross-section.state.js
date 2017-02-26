@@ -126,8 +126,7 @@
                             return {
                                 name: null,
                                 description: null,
-                                image: null,
-                                imageContentType: null,
+                                url: null,
                                 id: null
                             };
                         }

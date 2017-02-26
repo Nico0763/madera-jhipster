@@ -80,7 +80,7 @@ class ComponentGatlingTest extends Simulation {
             .exec(http("Create new component")
             .post("/api/components")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "reference":"SAMPLE_TEXT", "image":null}""")).asJSON
+            .body(StringBody("""{"id":null, "url":"SAMPLE_TEXT", "reference":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_component_url"))).exitHereIfFailed
             .pause(10)

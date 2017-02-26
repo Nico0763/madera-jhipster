@@ -19,7 +19,6 @@ import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Base64Utils;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -42,10 +41,8 @@ public class PatternResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
 
-    private static final byte[] DEFAULT_IMAGE = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_IMAGE = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_IMAGE_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_IMAGE_CONTENT_TYPE = "image/png";
+    private static final String DEFAULT_URL = "AAAAA";
+    private static final String UPDATED_URL = "BBBBB";
 
     @Inject
     private PatternRepository patternRepository;
@@ -82,8 +79,7 @@ public class PatternResourceIntTest {
     public static Pattern createEntity(EntityManager em) {
         Pattern pattern = new Pattern()
                 .name(DEFAULT_NAME)
-                .image(DEFAULT_IMAGE)
-                .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE);
+                .url(DEFAULT_URL);
         return pattern;
     }
 
@@ -109,8 +105,7 @@ public class PatternResourceIntTest {
         assertThat(patterns).hasSize(databaseSizeBeforeCreate + 1);
         Pattern testPattern = patterns.get(patterns.size() - 1);
         assertThat(testPattern.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testPattern.getImage()).isEqualTo(DEFAULT_IMAGE);
-        assertThat(testPattern.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
+        assertThat(testPattern.getUrl()).isEqualTo(DEFAULT_URL);
     }
 
     @Test
@@ -125,8 +120,7 @@ public class PatternResourceIntTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(pattern.getId().intValue())))
                 .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-                .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
-                .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))));
+                .andExpect(jsonPath("$.[*].url").value(hasItem(DEFAULT_URL.toString())));
     }
 
     @Test
@@ -141,8 +135,7 @@ public class PatternResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(pattern.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.imageContentType").value(DEFAULT_IMAGE_CONTENT_TYPE))
-            .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)));
+            .andExpect(jsonPath("$.url").value(DEFAULT_URL.toString()));
     }
 
     @Test
@@ -164,8 +157,7 @@ public class PatternResourceIntTest {
         Pattern updatedPattern = patternRepository.findOne(pattern.getId());
         updatedPattern
                 .name(UPDATED_NAME)
-                .image(UPDATED_IMAGE)
-                .imageContentType(UPDATED_IMAGE_CONTENT_TYPE);
+                .url(UPDATED_URL);
 
         restPatternMockMvc.perform(put("/api/patterns")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -177,8 +169,7 @@ public class PatternResourceIntTest {
         assertThat(patterns).hasSize(databaseSizeBeforeUpdate);
         Pattern testPattern = patterns.get(patterns.size() - 1);
         assertThat(testPattern.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testPattern.getImage()).isEqualTo(UPDATED_IMAGE);
-        assertThat(testPattern.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
+        assertThat(testPattern.getUrl()).isEqualTo(UPDATED_URL);
     }
 
     @Test

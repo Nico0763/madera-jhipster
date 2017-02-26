@@ -20,7 +20,7 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span data-translate="maderaApp.pattern.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="image"><span data-translate="maderaApp.pattern.image">Image</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="url"><span data-translate="maderaApp.pattern.url">Url</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="assortment.id"><span data-translate="maderaApp.pattern.assortment">Assortment</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
@@ -29,12 +29,7 @@
                 <tr ng-repeat="pattern in vm.patterns track by pattern.id">
                     <td><a ui-sref="pattern-detail({id:pattern.id})">{{pattern.id}}</a></td>
                     <td>{{pattern.name}}</td>
-                    <td>
-                        <a ng-if="pattern.image" ng-click="vm.openFile(pattern.imageContentType, pattern.image)">
-                            <img data-ng-src="{{'data:' + pattern.imageContentType + ';base64,' + pattern.image}}" style="max-height: 30px;"/>
-                        </a>
-                        <span ng-if="pattern.image">{{pattern.imageContentType}}, {{vm.byteSize(pattern.image)}}</span>
-                    </td>
+                    <td>{{pattern.url}}</td>
                     <td>
                         <a ui-sref="assortment-detail({id:pattern.assortment.id})">{{pattern.assortment.id}}</a>
                     </td>

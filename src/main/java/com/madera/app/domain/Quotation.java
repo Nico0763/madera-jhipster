@@ -40,7 +40,7 @@ public class Quotation implements Serializable {
 
     @Column(name = "commercial_percentage")
     private Float commercial_percentage;
-
+ 
     @Pattern(regexp = "[0-9]{4}-[0-9]{2}-[A-Z]{2}-[A-Z]{2}")
     @Column(name = "reference")
     private String reference;

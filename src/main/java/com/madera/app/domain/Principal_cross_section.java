@@ -33,12 +33,8 @@ public class Principal_cross_section implements Serializable {
     @Column(name = "description", length = 255)
     private String description;
 
-    @Lob
-    @Column(name = "image")
-    private byte[] image;
-
-    @Column(name = "image_content_type")
-    private String imageContentType;
+    @Column(name = "url")
+    private String url;
 
     @OneToMany(mappedBy = "principal_cross_section")
     @JsonIgnore
@@ -79,30 +75,17 @@ public class Principal_cross_section implements Serializable {
         this.description = description;
     }
 
-    public byte[] getImage() {
-        return image;
+    public String getUrl() {
+        return url;
     }
 
-    public Principal_cross_section image(byte[] image) {
-        this.image = image;
+    public Principal_cross_section url(String url) {
+        this.url = url;
         return this;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
-    public String getImageContentType() {
-        return imageContentType;
-    }
-
-    public Principal_cross_section imageContentType(String imageContentType) {
-        this.imageContentType = imageContentType;
-        return this;
-    }
-
-    public void setImageContentType(String imageContentType) {
-        this.imageContentType = imageContentType;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public Set<Module> getModules() {
@@ -156,8 +139,7 @@ public class Principal_cross_section implements Serializable {
             "id=" + id +
             ", name='" + name + "'" +
             ", description='" + description + "'" +
-            ", image='" + image + "'" +
-            ", imageContentType='" + imageContentType + "'" +
+            ", url='" + url + "'" +
             '}';
     }
 }

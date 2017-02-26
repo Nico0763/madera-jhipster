@@ -5,9 +5,9 @@
         .module('maderaApp')
         .controller('Cover_typeController', Cover_typeController);
 
-    Cover_typeController.$inject = ['$scope', '$state', 'DataUtils', 'Cover_type', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants'];
+    Cover_typeController.$inject = ['$scope', '$state', 'Cover_type', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants'];
 
-    function Cover_typeController ($scope, $state, DataUtils, Cover_type, ParseLinks, AlertService, pagingParams, paginationConstants) {
+    function Cover_typeController ($scope, $state, Cover_type, ParseLinks, AlertService, pagingParams, paginationConstants) {
         var vm = this;
         
         vm.loadPage = loadPage;
@@ -15,8 +15,6 @@
         vm.reverse = pagingParams.ascending;
         vm.transition = transition;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
-        vm.openFile = DataUtils.openFile;
-        vm.byteSize = DataUtils.byteSize;
 
         loadAll();
 

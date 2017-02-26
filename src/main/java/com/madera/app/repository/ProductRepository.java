@@ -14,4 +14,6 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product,Long> {
 	@Query("select p from Product p, Pattern pa where p.pattern = pa AND pa.id =:id")
     public List<Product> findByPattern(@Param("id") Long id);
+
+    public List<Product> findAllByQuotationId(Long id);
 }

@@ -27,34 +27,20 @@
 
 
                      <td ng-if="result != vm.select">
-                        <a ng-if="result.image" ng-click="vm.openFile(result.imageContentType, result.image)">
-                            <img data-ng-src="{{'data:' + result.imageContentType + ';base64,' + result.image}}" style="max-height: 30px;"/>
-                        </a>
-                        <span ng-if="result.image">{{result.imageContentType}}, {{vm.byteSize(result.image)}}</span>
+                            <img  ng-if="result.url" src="http://res.cloudinary.com/hce6zhs7v/image/upload/{{result.url}}" style="max-height: 100px;"/>
                     </td>
                     <td ng-if="result == vm.select">
                         
 
                              <div class="form-group" ngf-drop ngf-change="vm.setImage($file)" ngf-pattern="'image/*'">
                                 <div>
-                                    <img data-ng-src="{{'data:' + vm.editData.imageContentType + ';base64,' + vm.editData.image}}" style="max-height: 100px;" ng-if="vm.editData.image"/>
-                                    <div ng-if="vm.editData.image" class="help-block clearfix">
-                                        <span class="pull-left">{{vm.editData.imageContentType}}, {{vm.byteSize(vm.editData.image)}}</span>
-                                        <button type="button" ng-click="vm.editData.image=null;vm.editData.imageContentType=null;"
-                                                class="btn btn-default btn-xs pull-right">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </button>
+                                    <img src="http://res.cloudinary.com/hce6zhs7v/image/upload/{{vm.editData.url}}" style="max-height: 100px;" ng-if="vm.editData.url"/>
+                                    <div class="btn mf__btn-file-upload">
+                                        <form name="fileinfo" enctype="multipart/form-data" > 
+                                            <input enctype="multipart/form-data" type="file" id="upload" name="fileUploadImage" ngf-resize="{width: 150, height: 150}"></input>
+                                        </form>
                                     </div>
-                                    <button type="button" ngf-select class="btn btn-default btn-block"
-                                            ngf-change="vm.setImage($file, vm.editData)" accept="image/*" ngf-resize="{width: 150, height: 150}">
-                                       Sélectionner une image
-                                    </button>
                                 </div>
-                                <input type="hidden" class="form-control" name="image" id="field_image"
-                                        ng-model="vm.editData.image"
-                                         />
-                                <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
-                                        ng-model="vm.editData.imageContentType" />
                             </div>
 
                     </td>
@@ -109,27 +95,11 @@
                     
                     </td>
                     <td>
-                        <div class="form-group" ngf-drop ngf-change="vm.setImage($file, vm.addData)" ngf-pattern="'image/*'">
-                                <div>
-                                    <img data-ng-src="{{'data:' + vm.addData.imageContentType + ';base64,' + vm.addData.image}}" style="max-height: 100px;" ng-if="vm.addData.image"/>
-                                    <div ng-if="vm.addData.image" class="help-block clearfix">
-                                        <span class="pull-left">{{vm.addData.imageContentType}}, {{vm.byteSize(vm.addData.image)}}</span>
-                                        <button type="button" ng-click="vm.addData.image=null;vm.addData.imageContentType=null;"
-                                                class="btn btn-default btn-xs pull-right">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </button>
-                                    </div>
-                                    <button type="button" ngf-select class="btn btn-default btn-block"
-                                            ngf-change="vm.setImage($file,vm.addData)" accept="image/*">
-                                       Sélectionner une image
-                                    </button>
-                                </div>
-                                <input type="hidden" class="form-control" name="image" id="field_image"
-                                        ng-model="vm.addData.image"
-                                         />
-                                <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
-                                        ng-model="vm.addData.imageContentType" />
-                            </div>
+                         <div class="btn mf__btn-file-upload">
+                             <form name="fileaddinfo" enctype="multipart/form-data" > 
+                                    <input enctype="multipart/form-data" type="file" id="upload" name="fileUploadImage" ngf-resize="{width: 150, height: 150}">
+                            </form>
+                        </div>
                     </td>
                     <td>
                         <div class="btn-group flex-btn-group-container">

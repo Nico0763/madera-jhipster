@@ -80,7 +80,7 @@ class FrameGatlingTest extends Simulation {
             .exec(http("Create new frame")
             .post("/api/frames")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "image":null}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "url":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_frame_url"))).exitHereIfFailed
             .pause(10)

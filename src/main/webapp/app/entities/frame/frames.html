@@ -20,7 +20,7 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span data-translate="maderaApp.frame.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="image"><span data-translate="maderaApp.frame.image">Image</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="url"><span data-translate="maderaApp.frame.url">Url</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -28,12 +28,7 @@
                 <tr ng-repeat="frame in vm.frames track by frame.id">
                     <td><a ui-sref="frame-detail({id:frame.id})">{{frame.id}}</a></td>
                     <td>{{frame.name}}</td>
-                    <td>
-                        <a ng-if="frame.image" ng-click="vm.openFile(frame.imageContentType, frame.image)">
-                            <img data-ng-src="{{'data:' + frame.imageContentType + ';base64,' + frame.image}}" style="max-height: 30px;"/>
-                        </a>
-                        <span ng-if="frame.image">{{frame.imageContentType}}, {{vm.byteSize(frame.image)}}</span>
-                    </td>
+                    <td>{{frame.url}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

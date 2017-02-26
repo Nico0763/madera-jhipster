@@ -5,15 +5,13 @@
         .module('maderaApp')
         .controller('Finition_extDialogController', Finition_extDialogController);
 
-    Finition_extDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Finition_ext', 'Assortment'];
+    Finition_extDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Finition_ext', 'Assortment'];
 
-    function Finition_extDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Finition_ext, Assortment) {
+    function Finition_extDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Finition_ext, Assortment) {
         var vm = this;
 
         vm.finition_ext = entity;
         vm.clear = clear;
-        vm.byteSize = DataUtils.byteSize;
-        vm.openFile = DataUtils.openFile;
         vm.save = save;
         vm.assortments = Assortment.query();
 
@@ -44,20 +42,6 @@
             vm.isSaving = false;
         }
 
-
-        vm.setImage = function ($file, finition_ext) {
-            if ($file && $file.$error === 'pattern') {
-                return;
-            }
-            if ($file) {
-                DataUtils.toBase64($file, function(base64Data) {
-                    $scope.$apply(function() {
-                        finition_ext.image = base64Data;
-                        finition_ext.imageContentType = $file.type;
-                    });
-                });
-            }
-        };
 
     }
 })();

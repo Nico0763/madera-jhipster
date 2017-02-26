@@ -80,7 +80,7 @@ class PatternGatlingTest extends Simulation {
             .exec(http("Create new pattern")
             .post("/api/patterns")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "image":null}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "url":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_pattern_url"))).exitHereIfFailed
             .pause(10)

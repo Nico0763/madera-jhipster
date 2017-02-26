@@ -34,17 +34,16 @@
     ],
     "fields": [
         {
+            "fieldName": "url",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "reference",
             "fieldType": "String",
             "fieldValidateRules": [
                 "pattern"
             ],
             "fieldValidateRulesPattern": "^[0-9]{4}-[0-9]{2}-[A-Z]-[A-Z]$"
-        },
-        {
-            "fieldName": "image",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "image"
         }
     ],
     "changelogDate": "20161021113648",

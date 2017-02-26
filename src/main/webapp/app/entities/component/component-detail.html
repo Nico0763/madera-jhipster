@@ -4,18 +4,13 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="maderaApp.component.url">Url</span></dt>
+        <dd>
+            <span>{{vm.component.url}}</span>
+        </dd>
         <dt><span data-translate="maderaApp.component.reference">Reference</span></dt>
         <dd>
             <span>{{vm.component.reference}}</span>
-        </dd>
-        <dt><span data-translate="maderaApp.component.image">Image</span></dt>
-        <dd>
-            <div ng-if="vm.component.image">
-                <a ng-click="vm.openFile(vm.component.imageContentType, vm.component.image)">
-                    <img data-ng-src="{{'data:' + vm.component.imageContentType + ';base64,' + vm.component.image}}" style="max-width: 100%;"/>
-                </a>
-                {{vm.component.imageContentType}}, {{vm.byteSize(vm.component.image)}}
-            </div>
         </dd>
         <dt><span data-translate="maderaApp.component.provider">Provider</span></dt>
         <dd>

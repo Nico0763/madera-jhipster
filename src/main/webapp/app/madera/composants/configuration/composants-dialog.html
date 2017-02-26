@@ -6,7 +6,7 @@
                 ng-click="vm.clear()">&times;</button>
         <h4 class="modal-title" id="myComponentLabel" data-translate="maderaApp.component.home.createOrEditLabel">Create or edit a Component</h4>
     </div>
-    <div class="modal-body">
+    <div class="modal-body" >
         <jhi-alert-error></jhi-alert-error>
         <div class="form-group" ng-show="vm.component.id">
             <label for="id" data-translate="global.field.id">ID</label>
@@ -25,27 +25,15 @@
                 </p>
             </div>
         </div>
-        <div class="form-group" ngf-drop ngf-change="vm.setImage($file, vm.component)" ngf-pattern="'image/*'">
+        <div class="form-group" ngf-drop ngf-change="vm.setImage($file)" ngf-pattern="'image/*'">
             <label class="control-label" data-translate="maderaApp.component.image" for="field_image">Image</label>
             <div>
-                <img data-ng-src="{{'data:' + vm.component.imageContentType + ';base64,' + vm.component.image}}" style="max-height: 100px;" ng-if="vm.component.image"/>
-                <div ng-if="vm.component.image" class="help-block clearfix">
-                    <span class="pull-left">{{vm.component.imageContentType}}, {{vm.byteSize(vm.component.image)}}</span>
-                    <button type="button" ng-click="vm.component.image=null;vm.component.imageContentType=null;"
-                            class="btn btn-default btn-xs pull-right">
-                        <span class="glyphicon glyphicon-remove"></span>
+               <img src="http://res.cloudinary.com/hce6zhs7v/image/upload/{{vm.component.url}}" style="max-height: 100px;" ng-if="vm.component.url"/><br/>
+                     <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setImage($file)" accept="image/*">
+                        Importer une image <span ng-if="vm.file.name">({{vm.file.name}})</span>
                     </button>
-                </div>
-                <button type="button" ngf-select class="btn btn-default btn-block"
-                        ngf-change="vm.setImage($file, vm.component)" accept="image/*" data-translate="entity.action.addimage">
-                    Add image
-                </button>
-            </div>
-            <input type="hidden" class="form-control" name="image" id="field_image"
-                    ng-model="vm.component.image"
-                     />
-            <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
-                    ng-model="vm.component.imageContentType" />
+
         </div>
 
         <div class="form-group">

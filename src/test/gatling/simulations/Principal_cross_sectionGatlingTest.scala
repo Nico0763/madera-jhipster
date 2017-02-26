@@ -80,7 +80,7 @@ class Principal_cross_sectionGatlingTest extends Simulation {
             .exec(http("Create new principal_cross_section")
             .post("/api/principal-cross-sections")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "description":"SAMPLE_TEXT", "image":null}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "description":"SAMPLE_TEXT", "url":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_principal_cross_section_url"))).exitHereIfFailed
             .pause(10)

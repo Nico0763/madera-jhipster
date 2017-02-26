@@ -5,9 +5,9 @@
         .module('maderaApp')
         .controller('Principal_cross_sectionController', Principal_cross_sectionController);
 
-    Principal_cross_sectionController.$inject = ['$scope', '$state', 'DataUtils', 'Principal_cross_section', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants'];
+    Principal_cross_sectionController.$inject = ['$scope', '$state', 'Principal_cross_section', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants'];
 
-    function Principal_cross_sectionController ($scope, $state, DataUtils, Principal_cross_section, ParseLinks, AlertService, pagingParams, paginationConstants) {
+    function Principal_cross_sectionController ($scope, $state, Principal_cross_section, ParseLinks, AlertService, pagingParams, paginationConstants) {
         var vm = this;
         
         vm.loadPage = loadPage;
@@ -15,8 +15,6 @@
         vm.reverse = pagingParams.ascending;
         vm.transition = transition;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
-        vm.openFile = DataUtils.openFile;
-        vm.byteSize = DataUtils.byteSize;
 
         loadAll();
 

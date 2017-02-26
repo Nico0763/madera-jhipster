@@ -19,21 +19,16 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="image"><span data-translate="maderaApp.finition_ext.image">Image</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span data-translate="maderaApp.finition_ext.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="url"><span data-translate="maderaApp.finition_ext.url">Url</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="finition_ext in vm.finition_exts track by finition_ext.id">
                     <td><a ui-sref="finition-ext-detail({id:finition_ext.id})">{{finition_ext.id}}</a></td>
-                    <td>
-                        <a ng-if="finition_ext.image" ng-click="vm.openFile(finition_ext.imageContentType, finition_ext.image)">
-                            <img data-ng-src="{{'data:' + finition_ext.imageContentType + ';base64,' + finition_ext.image}}" style="max-height: 30px;"/>
-                        </a>
-                        <span ng-if="finition_ext.image">{{finition_ext.imageContentType}}, {{vm.byteSize(finition_ext.image)}}</span>
-                    </td>
                     <td>{{finition_ext.name}}</td>
+                    <td>{{finition_ext.url}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

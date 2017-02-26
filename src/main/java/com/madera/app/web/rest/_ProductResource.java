@@ -70,6 +70,19 @@ public class _ProductResource {
     }
 
 
+    @RequestMapping(value="/products/quotation/{id}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<Product> findByQuotationId(@PathVariable Long id)
+    {
+        log.debug("REST request to get all products by quotation id");
+
+        return productRepository.findAllByQuotationId(id);
+    }
+
+
+
 
     @RequestMapping(value = "/products/dependencies",
         method = RequestMethod.POST,

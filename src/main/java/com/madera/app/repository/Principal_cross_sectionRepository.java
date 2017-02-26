@@ -19,3 +19,4 @@ public interface Principal_cross_sectionRepository extends JpaRepository<Princip
     public Page<Principal_cross_section> searchPrincipal_cross_sections(Pageable pageable, @Param("critere") String critere);
 
 }
+ 

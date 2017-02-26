@@ -25,27 +25,11 @@
                 </p>
             </div>
         </div>
-        <div class="form-group" ngf-drop ngf-change="vm.setImage($file, vm.frame)" ngf-pattern="'image/*'">
-            <label class="control-label" data-translate="maderaApp.frame.image" for="field_image">Image</label>
-            <div>
-                <img data-ng-src="{{'data:' + vm.frame.imageContentType + ';base64,' + vm.frame.image}}" style="max-height: 100px;" ng-if="vm.frame.image"/>
-                <div ng-if="vm.frame.image" class="help-block clearfix">
-                    <span class="pull-left">{{vm.frame.imageContentType}}, {{vm.byteSize(vm.frame.image)}}</span>
-                    <button type="button" ng-click="vm.frame.image=null;vm.frame.imageContentType=null;"
-                            class="btn btn-default btn-xs pull-right">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-                </div>
-                <button type="button" ngf-select class="btn btn-default btn-block"
-                        ngf-change="vm.setImage($file, vm.frame)" accept="image/*" data-translate="entity.action.addimage">
-                    Add image
-                </button>
-            </div>
-            <input type="hidden" class="form-control" name="image" id="field_image"
-                    ng-model="vm.frame.image"
+        <div class="form-group">
+            <label class="control-label" data-translate="maderaApp.frame.url" for="field_url">Url</label>
+            <input type="text" class="form-control" name="url" id="field_url"
+                    ng-model="vm.frame.url"
                      />
-            <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
-                    ng-model="vm.frame.imageContentType" />
         </div>
 
     </div>

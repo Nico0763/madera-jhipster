@@ -21,7 +21,7 @@
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span data-translate="maderaApp.principal_cross_section.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="description"><span data-translate="maderaApp.principal_cross_section.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="image"><span data-translate="maderaApp.principal_cross_section.image">Image</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="url"><span data-translate="maderaApp.principal_cross_section.url">Url</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -30,12 +30,7 @@
                     <td><a ui-sref="principal-cross-section-detail({id:principal_cross_section.id})">{{principal_cross_section.id}}</a></td>
                     <td>{{principal_cross_section.name}}</td>
                     <td>{{principal_cross_section.description}}</td>
-                    <td>
-                        <a ng-if="principal_cross_section.image" ng-click="vm.openFile(principal_cross_section.imageContentType, principal_cross_section.image)">
-                            <img data-ng-src="{{'data:' + principal_cross_section.imageContentType + ';base64,' + principal_cross_section.image}}" style="max-height: 30px;"/>
-                        </a>
-                        <span ng-if="principal_cross_section.image">{{principal_cross_section.imageContentType}}, {{vm.byteSize(principal_cross_section.image)}}</span>
-                    </td>
+                    <td>{{principal_cross_section.url}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

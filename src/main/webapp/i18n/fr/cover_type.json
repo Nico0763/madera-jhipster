@@ -17,7 +17,7 @@
                 "title": "Cover Type"
             },
             "name": "Name",
-            "image": "Image",
+            "url": "Url",
             "assortment": "Assortment"
         }
     }

@@ -4,18 +4,13 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
-        <dt><span data-translate="maderaApp.finition_ext.image">Image</span></dt>
-        <dd>
-            <div ng-if="vm.finition_ext.image">
-                <a ng-click="vm.openFile(vm.finition_ext.imageContentType, vm.finition_ext.image)">
-                    <img data-ng-src="{{'data:' + vm.finition_ext.imageContentType + ';base64,' + vm.finition_ext.image}}" style="max-width: 100%;"/>
-                </a>
-                {{vm.finition_ext.imageContentType}}, {{vm.byteSize(vm.finition_ext.image)}}
-            </div>
-        </dd>
         <dt><span data-translate="maderaApp.finition_ext.name">Name</span></dt>
         <dd>
             <span>{{vm.finition_ext.name}}</span>
+        </dd>
+        <dt><span data-translate="maderaApp.finition_ext.url">Url</span></dt>
+        <dd>
+            <span>{{vm.finition_ext.url}}</span>
         </dd>
     </dl>
 

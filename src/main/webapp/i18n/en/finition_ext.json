@@ -16,8 +16,8 @@
             "detail": {
                 "title": "Finition Ext"
             },
-            "image": "Image",
             "name": "Name",
+            "url": "Url",
             "assortment": "Assortment"
         }
     }

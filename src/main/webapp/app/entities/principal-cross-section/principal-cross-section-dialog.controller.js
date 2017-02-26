@@ -5,15 +5,13 @@
         .module('maderaApp')
         .controller('Principal_cross_sectionDialogController', Principal_cross_sectionDialogController);
 
-    Principal_cross_sectionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Principal_cross_section', 'Module'];
+    Principal_cross_sectionDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Principal_cross_section', 'Module'];
 
-    function Principal_cross_sectionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Principal_cross_section, Module) {
+    function Principal_cross_sectionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Principal_cross_section, Module) {
         var vm = this;
 
         vm.principal_cross_section = entity;
         vm.clear = clear;
-        vm.byteSize = DataUtils.byteSize;
-        vm.openFile = DataUtils.openFile;
         vm.save = save;
         vm.modules = Module.query();
 
@@ -44,20 +42,6 @@
             vm.isSaving = false;
         }
 
-
-        vm.setImage = function ($file, principal_cross_section) {
-            if ($file && $file.$error === 'pattern') {
-                return;
-            }
-            if ($file) {
-                DataUtils.toBase64($file, function(base64Data) {
-                    $scope.$apply(function() {
-                        principal_cross_section.image = base64Data;
-                        principal_cross_section.imageContentType = $file.type;
-                    });
-                });
-            }
-        };
 
     }
 })();

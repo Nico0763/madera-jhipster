@@ -10,17 +10,16 @@
     ],
     "fields": [
         {
-            "fieldName": "image",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "image"
-        },
-        {
             "fieldName": "name",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
             ],
             "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "url",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20161019112550",

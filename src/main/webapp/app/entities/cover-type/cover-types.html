@@ -20,7 +20,7 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span data-translate="maderaApp.cover_type.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="image"><span data-translate="maderaApp.cover_type.image">Image</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="url"><span data-translate="maderaApp.cover_type.url">Url</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -28,12 +28,7 @@
                 <tr ng-repeat="cover_type in vm.cover_types track by cover_type.id">
                     <td><a ui-sref="cover-type-detail({id:cover_type.id})">{{cover_type.id}}</a></td>
                     <td>{{cover_type.name}}</td>
-                    <td>
-                        <a ng-if="cover_type.image" ng-click="vm.openFile(cover_type.imageContentType, cover_type.image)">
-                            <img data-ng-src="{{'data:' + cover_type.imageContentType + ';base64,' + cover_type.image}}" style="max-height: 30px;"/>
-                        </a>
-                        <span ng-if="cover_type.image">{{cover_type.imageContentType}}, {{vm.byteSize(cover_type.image)}}</span>
-                    </td>
+                    <td>{{cover_type.url}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

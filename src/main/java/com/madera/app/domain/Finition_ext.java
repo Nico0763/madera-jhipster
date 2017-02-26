@@ -25,16 +25,12 @@ public class Finition_ext implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Lob
-    @Column(name = "image")
-    private byte[] image;
-
-    @Column(name = "image_content_type")
-    private String imageContentType;
-
     @Size(max = 50)
     @Column(name = "name", length = 50)
     private String name;
+
+    @Column(name = "url")
+    private String url;
 
     @OneToMany(mappedBy = "finition_ext")
     @JsonIgnore
@@ -49,32 +45,6 @@ public class Finition_ext implements Serializable {
         this.id = id;
     }
 
-    public byte[] getImage() {
-        return image;
-    }
-
-    public Finition_ext image(byte[] image) {
-        this.image = image;
-        return this;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
-    public String getImageContentType() {
-        return imageContentType;
-    }
-
-    public Finition_ext imageContentType(String imageContentType) {
-        this.imageContentType = imageContentType;
-        return this;
-    }
-
-    public void setImageContentType(String imageContentType) {
-        this.imageContentType = imageContentType;
-    }
-
     public String getName() {
         return name;
     }
@@ -86,6 +56,19 @@ public class Finition_ext implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public Finition_ext url(String url) {
+        this.url = url;
+        return this;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public Set<Assortment> getAssortments() {
@@ -137,9 +120,8 @@ public class Finition_ext implements Serializable {
     public String toString() {
         return "Finition_ext{" +
             "id=" + id +
-            ", image='" + image + "'" +
-            ", imageContentType='" + imageContentType + "'" +
             ", name='" + name + "'" +
+            ", url='" + url + "'" +
             '}';
     }
 }

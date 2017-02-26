@@ -20,5 +20,4 @@ public interface ComponentRepository extends JpaRepository<Component,Long> {
     @Query("select c from Component c, Component_nature n where c.component_nature = n AND n.id =:id")
     public List<Component> findByNature(@Param("id") Long id);
 
-
 }

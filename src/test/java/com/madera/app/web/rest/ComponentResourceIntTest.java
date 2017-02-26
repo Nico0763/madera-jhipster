@@ -19,7 +19,6 @@ import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Base64Utils;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -39,13 +38,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = MaderaApp.class)
 public class ComponentResourceIntTest {
 
+    private static final String DEFAULT_URL = "AAAAA";
+    private static final String UPDATED_URL = "BBBBB";
+
     private static final String DEFAULT_REFERENCE = "AAAAA";
     private static final String UPDATED_REFERENCE = "BBBBB";
-
-    private static final byte[] DEFAULT_IMAGE = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_IMAGE = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_IMAGE_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_IMAGE_CONTENT_TYPE = "image/png";
 
     @Inject
     private ComponentRepository componentRepository;
@@ -81,9 +78,8 @@ public class ComponentResourceIntTest {
      */
     public static Component createEntity(EntityManager em) {
         Component component = new Component()
-                .reference(DEFAULT_REFERENCE)
-                .image(DEFAULT_IMAGE)
-                .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE);
+                .url(DEFAULT_URL)
+                .reference(DEFAULT_REFERENCE);
         return component;
     }
 
@@ -108,9 +104,8 @@ public class ComponentResourceIntTest {
         List<Component> components = componentRepository.findAll();
         assertThat(components).hasSize(databaseSizeBeforeCreate + 1);
         Component testComponent = components.get(components.size() - 1);
+        assertThat(testComponent.getUrl()).isEqualTo(DEFAULT_URL);
         assertThat(testComponent.getReference()).isEqualTo(DEFAULT_REFERENCE);
-        assertThat(testComponent.getImage()).isEqualTo(DEFAULT_IMAGE);
-        assertThat(testComponent.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
     }
 
     @Test
@@ -124,9 +119,8 @@ public class ComponentResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(component.getId().intValue())))
-                .andExpect(jsonPath("$.[*].reference").value(hasItem(DEFAULT_REFERENCE.toString())))
-                .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
-                .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))));
+                .andExpect(jsonPath("$.[*].url").value(hasItem(DEFAULT_URL.toString())))
+                .andExpect(jsonPath("$.[*].reference").value(hasItem(DEFAULT_REFERENCE.toString())));
     }
 
     @Test
@@ -140,9 +134,8 @@ public class ComponentResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(component.getId().intValue()))
-            .andExpect(jsonPath("$.reference").value(DEFAULT_REFERENCE.toString()))
-            .andExpect(jsonPath("$.imageContentType").value(DEFAULT_IMAGE_CONTENT_TYPE))
-            .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)));
+            .andExpect(jsonPath("$.url").value(DEFAULT_URL.toString()))
+            .andExpect(jsonPath("$.reference").value(DEFAULT_REFERENCE.toString()));
     }
 
     @Test
@@ -163,9 +156,8 @@ public class ComponentResourceIntTest {
         // Update the component
         Component updatedComponent = componentRepository.findOne(component.getId());
         updatedComponent
-                .reference(UPDATED_REFERENCE)
-                .image(UPDATED_IMAGE)
-                .imageContentType(UPDATED_IMAGE_CONTENT_TYPE);
+                .url(UPDATED_URL)
+                .reference(UPDATED_REFERENCE);
 
         restComponentMockMvc.perform(put("/api/components")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -176,9 +168,8 @@ public class ComponentResourceIntTest {
         List<Component> components = componentRepository.findAll();
         assertThat(components).hasSize(databaseSizeBeforeUpdate);
         Component testComponent = components.get(components.size() - 1);
+        assertThat(testComponent.getUrl()).isEqualTo(UPDATED_URL);
         assertThat(testComponent.getReference()).isEqualTo(UPDATED_REFERENCE);
-        assertThat(testComponent.getImage()).isEqualTo(UPDATED_IMAGE);
-        assertThat(testComponent.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
     }
 
     @Test

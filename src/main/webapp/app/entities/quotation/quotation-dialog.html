@@ -61,11 +61,11 @@
             <label class="control-label" data-translate="maderaApp.quotation.reference" for="field_reference">Reference</label>
             <input type="text" class="form-control" name="reference" id="field_reference"
                     ng-model="vm.quotation.reference"
-                    ng-pattern="/^[0-9]{4}-[0-9]-{2}-[A-Z]-[A-Z]$/" />
+                    ng-pattern="/^[0-9]{4}-[0-9]{2}-[A-Z]-[A-Z]$/" />
             <div ng-show="editForm.reference.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.reference.$error.pattern" data-translate="entity.validation.pattern" translate-value-pattern="^[0-9]{4}-[0-9]-{2}-[A-Z]-[A-Z]$">
-                    This field should follow pattern "^[0-9]{4}-[0-9]-{2}-[A-Z]-[A-Z]$".
+                    ng-show="editForm.reference.$error.pattern" data-translate="entity.validation.pattern" translate-value-pattern="^[0-9]{4}-[0-9]{2}-[A-Z]-[A-Z]$">
+                    This field should follow pattern "^[0-9]{4}-[0-9]{2}-[A-Z]-[A-Z]$".
                 </p>
             </div>
         </div>

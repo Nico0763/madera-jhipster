@@ -16,8 +16,8 @@
             "detail": {
                 "title": "Component"
             },
+            "url": "Url",
             "reference": "Reference",
-            "image": "Image",
             "component_product": "Component Product",
             "module_component": "Module Component",
             "provider": "Provider",

@@ -5,9 +5,9 @@
         .module('maderaApp')
         .controller('_ComposantsDialogController', _ComposantsDialogController);
 
-    _ComposantsDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Component', 'Component_product', 'Module_component', 'Provider', 'Component_nature', 'Command_component'];
+    _ComposantsDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Component', 'Component_product', 'Module_component', 'Provider', 'Component_nature', 'Command_component', 'ImageSaveFile', 'ImageResize','ImageRemoveFile'];
 
-    function _ComposantsDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Component, Component_product, Module_component, Provider, Component_nature, Command_component) {
+    function _ComposantsDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Component, Component_product, Module_component, Provider, Component_nature, Command_component, ImageSaveFile, ImageResize,ImageRemoveFile) {
         var vm = this;
 
         vm.component = entity;
@@ -21,6 +21,9 @@
         vm.component_natures = Component_nature.query();
         vm.command_components = Command_component.query();
 
+        vm.file =null;
+
+
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
@@ -32,9 +35,20 @@
         function save () {
             vm.isSaving = true;
             if (vm.component.id !== null) {
-                Component.update(vm.component, onSaveSuccess, onSaveError);
+
+                //Update
+                    saveImage(function(data)
+                    {                        
+                        Component.update(vm.component, onSaveSuccess,onSaveError);
+                    },'fileinfo',  vm.component,250,250);
+
             } else {
-                Component.save(vm.component, onSaveSuccess, onSaveError);
+
+                saveImage(function(data)
+                    {
+                        Component.save(vm.component, onSaveSuccess, onSaveError);
+                    },'fileinfo',vm.component,250,250);
+
             }
         }
 
@@ -49,19 +63,45 @@
         }
 
 
-        vm.setImage = function ($file, component) {
-            if ($file && $file.$error === 'pattern') {
+        function saveImage(callback, formName,  data, width,height)
+        {
+            var file = vm.file;
+            if(file==null)
+            {
+                callback(data);
                 return;
             }
-            if ($file) {
-                DataUtils.toBase64($file, function(base64Data) {
-                    $scope.$apply(function() {
-                        component.image = base64Data;
-                        component.imageContentType = $file.type;
-                    });
-                });
+          //  ImageRemoveFile.remove({url:deleteId});
+            //Delete de l'ancien
+            if(data.url != "" && data.url != null && data.url != undefined)
+            {   
+                ImageRemoveFile.delete({url:data.url});
             }
-        };
+           ImageResize.resize(file,width,height,function(cropFile) {
+            if(cropFile != null && cropFile != undefined)
+            {
+                var form = document.forms.namedItem("fileinfo");
+                var fd = new FormData(form); 
+                fd.delete("fileUploadImage");
+                fd.append("fileUploadImage", cropFile);
 
+                 ImageSaveFile.save(fd,function(dataUrl)
+                    {
+                    
+                        data.url = dataUrl.url;
+                        callback(data);
+                    });  
+             }
+           });
+            
+        }
+
+
+
+        vm.setImage = function(f)
+        {
+            console.debug(f);
+           vm.file = f;
+        }
     }
 })();

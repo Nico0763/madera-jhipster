@@ -17,11 +17,11 @@
             <label class="control-label" data-translate="maderaApp.component_product.angle" for="field_angle">Angle</label>
             <input type="number" class="form-control" name="angle" id="field_angle"
                     ng-model="vm.component_product.angle"
-                    max="9" />
+                    max="360" />
             <div ng-show="editForm.angle.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.angle.$error.max" data-translate="entity.validation.max" translate-value-max="9">
-                    This field cannot be more than 9.
+                    ng-show="editForm.angle.$error.max" data-translate="entity.validation.max" translate-value-max="360">
+                    This field cannot be more than 360.
                 </p>
                 <p class="help-block"
                     ng-show="editForm.angle.$error.number" data-translate="entity.validation.number">

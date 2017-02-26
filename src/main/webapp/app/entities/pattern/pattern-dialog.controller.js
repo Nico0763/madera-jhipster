@@ -5,15 +5,13 @@
         .module('maderaApp')
         .controller('PatternDialogController', PatternDialogController);
 
-    PatternDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Pattern', 'Assortment', 'Product'];
+    PatternDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Pattern', 'Assortment', 'Product'];
 
-    function PatternDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Pattern, Assortment, Product) {
+    function PatternDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Pattern, Assortment, Product) {
         var vm = this;
 
         vm.pattern = entity;
         vm.clear = clear;
-        vm.byteSize = DataUtils.byteSize;
-        vm.openFile = DataUtils.openFile;
         vm.save = save;
         vm.assortments = Assortment.query();
         vm.products = Product.query();
@@ -45,20 +43,6 @@
             vm.isSaving = false;
         }
 
-
-        vm.setImage = function ($file, pattern) {
-            if ($file && $file.$error === 'pattern') {
-                return;
-            }
-            if ($file) {
-                DataUtils.toBase64($file, function(base64Data) {
-                    $scope.$apply(function() {
-                        pattern.image = base64Data;
-                        pattern.imageContentType = $file.type;
-                    });
-                });
-            }
-        };
 
     }
 })();

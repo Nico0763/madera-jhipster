@@ -1,9 +1,14 @@
 package com.madera.app.web.rest;
 
+
+import com.madera.app.complex.*;
 import com.codahale.metrics.annotation.Timed;
 import com.madera.app.domain.Quotation;
+import com.madera.app.domain.Pattern;
 
 import com.madera.app.repository.QuotationRepository;
+
+import com.madera.app.service.QuotationService;
 import com.madera.app.web.rest.util.HeaderUtil;
 import com.madera.app.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -37,6 +42,9 @@ public class _QuotationResource {
     @Inject
     private QuotationRepository quotationRepository;
 
+    @Inject
+    private QuotationService quotationService;
+
     /**
      * GET  /quotations/:critere : get the "critere" to search.
      *
@@ -65,5 +73,28 @@ public class _QuotationResource {
         return quotationRepository.findAllByCustomerId(id);
     }
 
-
+    /**
+     * POST  /quotations : Create a new quotation base on pattern.
+     *
+     * @param quotation the quotation to create
+     * @return the ResponseEntity with status 201 (Created) and with body the new quotation, or with status 400 (Bad Request) if the quotation has already an ID
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @RequestMapping(value = "/quotations/pattern",
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Quotation> createQuotation(@RequestBody QuotationPattern quotationPattern) throws URISyntaxException {
+        
+        Quotation quotation = quotationPattern.quotation;
+        Long id = quotationPattern.id;
+        log.debug("REST request to save Quotation : {}", quotation);
+        if (quotation.getId() != null) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("quotation", "idexists", "A new quotation cannot already have an ID")).body(null);
+        }
+        Quotation result = quotationService.save(quotation, id);
+        return ResponseEntity.created(new URI("/api/quotations/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert("quotation", result.getId().toString()))
+            .body(result);
+    }
 }
