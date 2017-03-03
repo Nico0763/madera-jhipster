@@ -116,7 +116,8 @@ gulp.task('ngconstant:dev', function () {
         name: 'maderaApp',
         constants: {
             VERSION: util.parseVersion(),
-            DEBUG_INFO_ENABLED: true
+            DEBUG_INFO_ENABLED: true,
+            CLOUNDINARY_URL: "http://res.cloudinary.com/hejvjmwx8/image/upload/"
         },
         template: config.constantTemplate,
         stream: true
@@ -130,7 +131,8 @@ gulp.task('ngconstant:prod', function () {
         name: 'maderaApp',
         constants: {
             VERSION: util.parseVersion(),
-            DEBUG_INFO_ENABLED: false
+            DEBUG_INFO_ENABLED: false,
+            CLOUNDINARY_URL: "http://res.cloudinary.com/hejvjmwx8/image/upload/"
         },
         template: config.constantTemplate,
         stream: true

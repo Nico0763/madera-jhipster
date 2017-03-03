@@ -78,7 +78,7 @@
         vm.selectElement = function(element, data)
         {
             vm.select = element;
-            data.name = element.name;
+            data.nature = element.nature;
             data.caracteristics= element.caracteristics;
             data.unit_used=element.unit_used;
         }
@@ -90,7 +90,7 @@
             if(type == 1 && vm.select != null)
             {
             
-                    vm.select.name = data.name;
+                    vm.select.nature = data.nature;
 
       
                     vm.select.caracteristics = data.caracteristics;
@@ -110,7 +110,7 @@
             }
             else if(type==2)
             {
-                Module_nature.save({name:data.name, caracteristics:data.caracteristics, unit_used:data.unit_used}, function(success)
+                Module_nature.save({nature:data.nature, caracteristics:data.caracteristics, unit_used:data.unit_used}, function(success)
                     {
                         console.debug(success)
                         $state.reload();
@@ -119,7 +119,7 @@
                     });
             }
 
-            data.name = null;
+            data.nature = null;
             data.caracteristics = null;
             data.unit_used = null;
 

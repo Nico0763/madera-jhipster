@@ -5,5 +5,6 @@
         .module('maderaApp')
         .constant('VERSION', "0.0.1-SNAPSHOT")
         .constant('DEBUG_INFO_ENABLED', false)
+        .constant('CLOUNDINARY_URL', "http://res.cloudinary.com/hejvjmwx8/image/upload/")
 ;
 })();

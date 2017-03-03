@@ -2,8 +2,9 @@ package com.madera.app.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.validation.constraints.Pattern;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -45,11 +46,11 @@ public class Customer implements Serializable {
     @Column(name = "city", length = 50)
     private String city;
 
-    @Pattern(regexp = "^[0-9]{11}$")
+    @Pattern(regexp = "^[0-9]{10}$")
     @Column(name = "phone_number")
     private String phone_number;
 
-    @Pattern(regexp = "^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$")
+    @Pattern(regexp = "^(([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5}){1,25})+)*$")
     @Column(name = "mail")
     private String mail;
 

@@ -65,9 +65,9 @@ public class _ImageResource {
          log.debug("Working Directory = " + System.getProperty("user.dir"));
        
          Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
-          "cloud_name", "hce6zhs7v",
-          "api_key", "649165736331713",
-          "api_secret", "nQaojVL_JPqaxQH-w8qU8EGoGHM"));
+          "cloud_name", "hejvjmwx8",
+          "api_key", "355957355283844",
+          "api_secret", "FB35qqf13TbKevIqPb2Y_THfAwI"));
 
 
 
@@ -133,9 +133,9 @@ public class _ImageResource {
 
         imageRepository.delete(image.getId());*/
           Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
-          "cloud_name", "hce6zhs7v",
-          "api_key", "649165736331713",
-          "api_secret", "nQaojVL_JPqaxQH-w8qU8EGoGHM"));
+         "cloud_name", "hejvjmwx8",
+          "api_key", "355957355283844",
+          "api_secret", "FB35qqf13TbKevIqPb2Y_THfAwI"));
 
         try
         {

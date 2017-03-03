@@ -10,17 +10,31 @@
 
 
       var methods = {};
-        methods.resize = function(image, width, height, callback)
+        methods.resize = function(image, maxWidth, maxHeight, callback)
         {
-           var myCanvas = document.createElement("canvas");
-           myCanvas.width = width;
-           myCanvas.height = height;
-            var ctx = myCanvas.getContext('2d');
+            var canvas = document.createElement("canvas");
             var img = new Image();
-            img.onload = function(){
-                ctx.drawImage(img, 0, 0,width,height);
+            var ctx = canvas.getContext("2d");
+            var canvasCopy = document.createElement("canvas");
+            var copyContext = canvasCopy.getContext("2d");
 
-                callback(dataURLtoFile(myCanvas.toDataURL('image/png'),'a.png'));
+            img.onload = function()
+            {
+                var ratio = 1;
+
+                if(img.width > maxWidth)
+                    ratio = maxWidth / img.width;
+                else if(img.height > maxHeight)
+                    ratio = maxHeight / img.height;
+
+                canvasCopy.width = img.width;
+                canvasCopy.height = img.height;
+                copyContext.drawImage(img, 0, 0);
+
+                canvas.width = img.width * ratio;
+                canvas.height = img.height * ratio;
+                ctx.drawImage(canvasCopy, 0, 0, canvasCopy.width, canvasCopy.height, 0, 0, canvas.width, canvas.height);
+                callback(dataURLtoFile(canvas.toDataURL('image/png'),'a.png'));
             };
 
             img.src = URL.createObjectURL(image);

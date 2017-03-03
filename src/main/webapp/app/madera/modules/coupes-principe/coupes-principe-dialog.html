@@ -40,7 +40,7 @@
         <div class="form-group" ngf-drop ngf-change="vm.setImage($file)" ngf-pattern="'image/*'">
             <label class="control-label" data-translate="maderaApp.principal_cross_section.image" for="field_image">Image</label>
             <div>
-               <img src="http://res.cloudinary.com/hce6zhs7v/image/upload/{{vm.principal_cross_section.url}}" style="max-height: 100px;" ng-if="vm.principal_cross_section.url"/><br/>
+               <img src="{{CLOUNDINARY_URL}}{{vm.principal_cross_section.url}}" style="max-height: 100px;" ng-if="vm.principal_cross_section.url"/><br/>
                      <button type="button" ngf-select class="btn btn-default btn-block"
                         ngf-change="vm.setImage($file)" accept="image/*">
                         Importer une image <span ng-if="vm.file.name">({{vm.file.name}})</span>

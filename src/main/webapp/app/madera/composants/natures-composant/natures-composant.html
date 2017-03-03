@@ -16,7 +16,7 @@
 
                 <tr ng-repeat="result in vm.results track by result.id" ng-form="formNature">
                         
-                        <td ng-if="result != vm.select">{{result.name}}</td>
+                        <td ng-if="result != vm.select">{{result.nature}}</td>
                         <td ng-if="result == vm.select"><input ng-model="vm.editData.nature" class="form-control" type="text" value="{{result.nature}}"  name="nature" ng-maxlength="50"/>
                         <span class="input-error" ng-show="!formNature.nature.$valid">La longueur de ce champs ne doit pas être supérieur à 50 charactères.</span></td>
 

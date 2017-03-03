@@ -55,7 +55,7 @@
             "fieldValidateRules": [
                 "pattern"
             ],
-            "fieldValidateRulesPattern": "^[0-9]{11}$"
+            "fieldValidateRulesPattern": "^[0-9]{10}$"
         },
         {
             "fieldName": "mail",
@@ -63,7 +63,7 @@
             "fieldValidateRules": [
                 "pattern"
             ],
-            "fieldValidateRulesPattern": "^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$"
+            "fieldValidateRulesPattern": "^(([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5}){1,25})+)*$"
         }
     ],
     "changelogDate": "20161020111027",

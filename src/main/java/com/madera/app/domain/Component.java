@@ -29,7 +29,7 @@ public class Component implements Serializable {
     @Column(name = "url")
     private String url;
 
-    @Pattern(regexp = "^[0-9]{4}-[0-9]{2}-[A-Z]-[A-Z]$")
+    @Pattern(regexp = "^[0-9]{4}-[0-9]{2}-[a-zA-Z]+$")
     @Column(name = "reference")
     private String reference;
 

@@ -77,11 +77,11 @@
             <label class="control-label" data-translate="maderaApp.customer.phone_number" for="field_phone_number">Phone Number</label>
             <input type="text" class="form-control" name="phone_number" id="field_phone_number"
                     ng-model="vm.customer.phone_number"
-                    ng-pattern="/^[0-9]{11}$/" />
+                    ng-pattern="/^[0-9]{10}$/" />
             <div ng-show="editForm.phone_number.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.phone_number.$error.pattern" data-translate="entity.validation.pattern" translate-value-pattern="^[0-9]{11}$">
-                    This field should follow pattern "^[0-9]{11}$".
+                    ng-show="editForm.phone_number.$error.pattern" data-translate="entity.validation.pattern" translate-value-pattern="^[0-9]{10}$">
+                    This field should follow pattern "^[0-9]{10}$".
                 </p>
             </div>
         </div>
@@ -89,11 +89,11 @@
             <label class="control-label" data-translate="maderaApp.customer.mail" for="field_mail">Mail</label>
             <input type="text" class="form-control" name="mail" id="field_mail"
                     ng-model="vm.customer.mail"
-                    ng-pattern="/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/" />
+                    ng-pattern="/^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+)*$/" />
             <div ng-show="editForm.mail.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.mail.$error.pattern" data-translate="entity.validation.pattern" translate-value-pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$">
-                    This field should follow pattern "^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$".
+                    ng-show="editForm.mail.$error.pattern" data-translate="entity.validation.pattern" translate-value-pattern="^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+)*$">
+                    This field should follow pattern "^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+)*$".
                 </p>
             </div>
         </div>

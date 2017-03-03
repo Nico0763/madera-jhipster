@@ -17,18 +17,18 @@
             <label class="control-label" data-translate="maderaApp.component.reference" for="field_reference">Reference</label>
             <input type="text" class="form-control" name="reference" id="field_reference"
                     ng-model="vm.component.reference"
-                    ng-pattern="/^[0-9]{4}-[0-9]{2}-[A-Z]-[A-Z]$/" />
+                    ng-pattern="/^[0-9]{4}-[0-9]{2}-[a-zA-Z]+$/" />
             <div ng-show="editForm.reference.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.reference.$error.pattern" data-translate="entity.validation.pattern" translate-value-pattern="^[0-9]{4}-[0-9]{2}-[A-Z]-[A-Z]$">
-                    This field should follow pattern "^[0-9]{4}-[0-9]{2}-[A-Z]-[A-Z]$".
+                    ng-show="editForm.reference.$error.pattern" data-translate="entity.validation.pattern" translate-value-pattern="^[0-9]{4}-[0-9]{2}-[a-zA-Z]+$">
+                    This field should follow pattern "^[0-9]{4}-[0-9]{2}-[a-zA-Z]+$".
                 </p>
             </div>
         </div>
         <div class="form-group" ngf-drop ngf-change="vm.setImage($file)" ngf-pattern="'image/*'">
             <label class="control-label" data-translate="maderaApp.component.image" for="field_image">Image</label>
             <div>
-               <img src="http://res.cloudinary.com/hce6zhs7v/image/upload/{{vm.component.url}}" style="max-height: 100px;" ng-if="vm.component.url"/><br/>
+               <img src="{{CLOUNDINARY_URL}}{{vm.component.url}}" style="max-height: 100px;" ng-if="vm.component.url"/><br/>
                      <button type="button" ngf-select class="btn btn-default btn-block"
                         ngf-change="vm.setImage($file)" accept="image/*">
                         Importer une image <span ng-if="vm.file.name">({{vm.file.name}})</span>

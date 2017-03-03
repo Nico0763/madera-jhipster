@@ -27,14 +27,14 @@
 
 
                       <td ng-if="result != vm.select">
-                            <img  ng-if="result.url" src="http://res.cloudinary.com/hce6zhs7v/image/upload/{{result.url}}" style="max-height: 100px;"/>
+                            <img  ng-if="result.url" src="{{CLOUNDINARY_URL}}{{result.url}}" style="max-height: 100px;"/>
                     </td>
                     <td ng-if="result == vm.select">
                         
 
                              <div class="form-group" ngf-drop ngf-change="vm.setImage($file)" ngf-pattern="'image/*'">
                                 <div>
-                                    <img src="http://res.cloudinary.com/hce6zhs7v/image/upload/{{vm.editData.url}}" style="max-height: 100px;" ng-if="vm.editData.url"/>
+                                    <img src="{{CLOUNDINARY_URL}}{{vm.editData.url}}" style="max-height: 100px;" ng-if="vm.editData.url"/>
                                     <div class="btn mf__btn-file-upload">
                                         <form name="fileinfo" enctype="multipart/form-data" > 
                                             <input enctype="multipart/form-data" type="file" id="upload" name="fileUploadImage" ngf-resize="{width: 400, height: 400}"></input>
