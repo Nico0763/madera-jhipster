@@ -44,14 +44,23 @@ public class _DeadlineResource {
      */
     @RequestMapping(value = "/deadline/sum/quotation/{id}",
         method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+        produces = "application/json")
     @Timed
-    public ResponseEntity<Float> sum(@PathVariable Long id) throws URISyntaxException {
+    public String sum(@PathVariable Long id) throws URISyntaxException {
         log.debug("REST request to get all Answers");
         Float percent = deadlineRepository.sum(id);
-          return ResponseEntity.created(new URI("/api/deadline/sum/quotation/" + id))
-            .headers(HeaderUtil.createEntityCreationAlert("quotation", Long.toString(id)))
-            .body(percent);
+          return "{\"value\":" + String.valueOf(percent) + "}";
+    }
+
+    @RequestMapping(value="/deadlines/quotation/{id}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<Deadline> findByQuotationId(@PathVariable Long id)
+    {
+        log.debug("REST request to get all deadlines by quotation id");
+
+        return deadlineRepository.findAllByQuotationId(id);
     }
 
 

@@ -16,4 +16,6 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     public List<Product> findByPattern(@Param("id") Long id);
 
     public List<Product> findAllByQuotationId(Long id);
+
+   
 }

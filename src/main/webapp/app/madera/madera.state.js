@@ -24,7 +24,7 @@
                     },
                     'main@madera-admin': {
                         templateUrl: 'app/madera/main.html',
-                        controller: '',
+                        controller: 'MainPageController',
                         controllerAs: 'vm'
                     },
                     'login@madera-admin': {

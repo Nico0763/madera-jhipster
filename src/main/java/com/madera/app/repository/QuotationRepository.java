@@ -19,4 +19,8 @@ public interface QuotationRepository extends JpaRepository<Quotation,Long> {
     public Page<Quotation> searchQuotations(Pageable pageable, @Param("critere") String critere);
 
     List<Quotation> findAllByCustomerId(Long id);
+
+    @Query("select sum(p.module.price) from Quotation q, Product p where p.quotation = q AND q.id = :id")
+    public Long costQuotation(@Param("id") Long id);
+
 }

@@ -13,4 +13,6 @@ import java.util.List;
 public interface DeadlineRepository extends JpaRepository<Deadline,Long> {
 	 @Query("select SUM(d.percentage) from Deadline d, Quotation q where d.quotation = q AND q.id = :id")
     public Float sum(@Param("id") Long id);
+    
+    List<Deadline> findAllByQuotationId(Long id);
 }

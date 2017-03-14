@@ -2,8 +2,11 @@ package com.madera.app.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.madera.app.domain.Command;
+import com.madera.app.domain.Quotation;
 
 import com.madera.app.repository.CommandRepository;
+import com.madera.app.repository.QuotationRepository;
+import com.madera.app.service.CommandService;
 import com.madera.app.web.rest.util.HeaderUtil;
 import com.madera.app.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -33,7 +36,13 @@ public class _CommandResource {
     private final Logger log = LoggerFactory.getLogger(_CommandResource.class);
         
     @Inject
-    private CommandRepository commandRepository;
+    private CommandRepository commandRepository; 
+
+    @Inject
+    private QuotationRepository quotationRepository;
+
+     @Inject
+    private CommandService commandService;
 
      /**
      * GET  /commands/:critere : get the "critere" to search.
@@ -63,6 +72,22 @@ public class _CommandResource {
           Page<Command> page = commandRepository.findAllByState(pageable, state);
           HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/commands/state/{state}");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+
+    }
+
+    @RequestMapping(value="/commands/push",
+        method = RequestMethod.PUT,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public void pushCommand(@Valid @RequestBody Quotation _quotation) throws URISyntaxException
+    {
+        log.debug("REST request to push commands from quotation");
+        if (_quotation.getId() == null) {
+            return;
+        }
+        Quotation quotation = quotationRepository.findOne(_quotation.getId());
+          commandService.pushCommand(quotation);
+          
 
     }
 

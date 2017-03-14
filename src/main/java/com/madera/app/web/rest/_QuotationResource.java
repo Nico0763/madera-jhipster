@@ -97,4 +97,17 @@ public class _QuotationResource {
             .headers(HeaderUtil.createEntityCreationAlert("quotation", result.getId().toString()))
             .body(result);
     }
+
+    @RequestMapping(value="/quotation/total/{id}",
+        method = RequestMethod.GET,
+        produces = "application/json")
+    @Timed
+    public @ResponseBody String quotationCost(@PathVariable Long id) throws URISyntaxException
+    {
+        log.debug("REST request to get the cost of quotation");
+        Long total =  quotationService.getQuotationCost(id);
+        return "{\"value\":" + String.valueOf(total) + "}";
+        /*return ResponseEntity.created(new URI("/api/quotation/total/" + id))
+            .body(total);*/
+    }
 }

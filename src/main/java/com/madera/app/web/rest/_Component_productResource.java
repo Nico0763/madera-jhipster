@@ -43,7 +43,6 @@ public class _Component_productResource {
     public List<Component_product> findByProduct(@PathVariable Long id)
     {
         log.debug("REST request to get all component_products by product id");
-
         return component_productRepository.findAllByProductId(id);
     }
 

@@ -86,6 +86,14 @@ public class QuotationService {
         return q;
     }
 
+    @Transactional
+    public Long getQuotationCost(Long id) {
+      //  Quotation quotation = quotationRepository.findOne(id);
+        return quotationRepository.costQuotation(id);
+       // return  1;
+
+    }
+
 
    
 
